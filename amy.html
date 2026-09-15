@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amy AI | Asistente de Inteligencia Artificial</title>
+    <meta name="description" content="Interactúa con Amy AI, tu asistente virtual inteligente. Consulta bases de datos (BD), genera contenido dinámico (CD), programa y optimiza tus flujos de trabajo.">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/amy.css">
+</head>
+<body>
+    <!-- Navbar Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo" id="nav-logo">
+                <div class="logo-badge">AI</div>
+                <span>TEC <span class="gradient-text">AI</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link" id="nav-home">Inicio</a></li>
+                <li><a href="foro.html" class="nav-link" id="nav-foro">Foro</a></li>
+                <li><a href="ayuda.html" class="nav-link" id="nav-ayuda">Centro de Ayuda</a></li>
+                <li><a href="empresas.html" class="nav-link" id="nav-empresas">Para Empresas</a></li>
+                <li>
+                    <a href="amy.html" class="nav-link nav-link-amy active" id="nav-amy">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        Amy AI
+                    </a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
+                <a href="empresas.html#planes" class="btn btn-primary btn-sm" id="btn-planes-nav">Ver Planes</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content: Amy Interface -->
+    <main class="main-content" style="max-width: 1300px;">
+        <div class="amy-container">
+            
+            <!-- Left Sidebar: Modes & Links -->
+            <aside class="amy-sidebar">
+                <div class="sidebar-block">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
+                        <div class="logo-badge" style="width: 32px; height: 32px; font-size: 1rem; background: var(--grad-amy);">A</div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; line-height: 1.1;">Amy AI</h3>
+                            <span style="font-size: 0.75rem; color: var(--emerald);">● Sistema En Línea</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mode Selectors (BD, CD, General, Dev) -->
+                <div class="sidebar-block">
+                    <span class="sidebar-title">Módulos Especializados</span>
+                    <div class="mode-item active" data-mode="General" id="mode-general">
+                        <span>✨</span> Modo General
+                    </div>
+                    <div class="mode-item" data-mode="Base de Datos (BD)" id="mode-bd">
+                        <span>🗄️</span> Módulo BD (Base de Datos)
+                    </div>
+                    <div class="mode-item" data-mode="Contenido Dinámico (CD)" id="mode-cd">
+                        <span>⚡</span> Módulo CD (Contenido Dinámico)
+                    </div>
+                    <div class="mode-item" data-mode="Programación" id="mode-dev">
+                        <span>💻</span> Programación & Código
+                    </div>
+                </div>
+
+                <!-- Quick Navigation Links -->
+                <div class="sidebar-block" style="margin-top: auto;">
+                    <span class="sidebar-title">Acciones de Usuario</span>
+                    <button class="btn btn-secondary btn-sm trigger-login" style="width: 100%; justify-content: flex-start; text-align: left;" id="sidebar-login">
+                        🔑 Iniciar Sesión / Cuenta
+                    </button>
+                    <a href="empresas.html#planes" class="btn btn-outline-cyan btn-sm" style="width: 100%; justify-content: flex-start;" id="sidebar-planes">
+                        💎 Planes (Simple, Pro, Empresa)
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Chat Workspace Window -->
+            <section class="amy-chat-window">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="amy-status">
+                        <div class="status-dot"></div>
+                        <div>
+                            <h4 id="current-mode-name" style="font-size: 1rem;">Modo: General</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-dim);">TEC AI Core Engine v3.5</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.8rem;">
+                        <a href="ayuda.html" class="btn btn-secondary btn-sm" title="Centro de Ayuda">❓ Ayuda</a>
+                        <a href="foro.html" class="btn btn-secondary btn-sm" title="Ir al Foro">💬 Foro</a>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Stream -->
+                <div class="chat-messages" id="amy-messages">
+                    <!-- Amy Welcome Message -->
+                    <div class="message-bubble">
+                        <div class="message-avatar">Amy</div>
+                        <div class="message-content">
+                            ¡Hola! Soy **Amy**, tu asistente interactiva de **TEC AI**. 🤖✨
+                            <br><br>
+                            Puedo ayudarte a resolver dudas, trabajar con el módulo de **Base de Datos (BD)**, generar **Contenido Dinámico (CD)** o guiarte sobre los **Planes** disponibles.
+                            <br><br>
+                            *¿Qué te gustaría explorar hoy? Escribe tu mensaje a continuación.*
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Controls -->
+                <div class="chat-input-area">
+                    <input type="text" id="amy-chat-input" class="chat-input" placeholder="Pregunta algo a Amy (ej: 'Háblame de los módulos BD y CD' o '¿Qué planes tienen?')...">
+                    <button class="btn btn-primary" id="amy-send-btn">
+                        <span>Enviar</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal Login -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-box">
+            <button class="modal-close" id="close-login">&times;</button>
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC AI</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Guarda tus conversaciones con Amy y personaliza tus preferencias.</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Correo Electrónico</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btn-submit-login-amy">Ingresar a Amy</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="brand-logo" style="margin-bottom: 1rem;">
+                    <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem; background: var(--grad-amy);">A</div>
+                    <span>Amy AI</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">La inteligencia artificial que evoluciona contigo.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="foro.html">Foro de la Comunidad</a></li>
+                    <li><a href="ayuda.html">Centro de Ayudas</a></li>
+                    <li><a href="empresas.html">Para Empresas</a></li>
+                    <li><a href="amy.html">Amy AI Assistant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Módulos Amy</h4>
+                <ul>
+                    <li><a href="amy.html">Módulo Base de Datos (BD)</a></li>
+                    <li><a href="amy.html">Módulo Contenido Dinámico (CD)</a></li>
+                    <li><a href="empresas.html#planes">Planes: Simple, Pro, Empresa</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Amy AI Core. Todos los derechos reservados.</p>
+            <p>Sección: Amy AI Console</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/amy.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+/* ==========================================================================
+   INDEX.CSS — Estilos específicos de index.html
+   Depende de: base.css
+   ========================================================================== */
+
+/* --------------------------------------------------
+   SECCIÓN ECOSISTEMA (cards del index)
+   -------------------------------------------------- */
+.ecosystem-section {
+    margin-top: 3rem;
+}
+
+.ecosystem-section .section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.ecosystem-section .section-header p {
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------
+   BANNER EMPRESARIAL
+   -------------------------------------------------- */
+.enterprise-banner {
+    margin-top: 4rem;
+}
+
+.enterprise-banner .glass-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.enterprise-banner .banner-text p {
+    color: var(--text-muted);
+    margin-top: 0.8rem;
+}
