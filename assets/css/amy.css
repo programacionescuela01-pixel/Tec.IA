@@ -1,182 +1,407 @@
 /* ==========================================================================
-   AMY.CSS — Estilos específicos de amy.html
-   Depende de: base.css
+   AMY.CSS — Página Oficial Amy AI (Fiel a Boceto 1)
    ========================================================================== */
 
-/* --------------------------------------------------
-   LAYOUT PRINCIPAL DEL CHAT
-   -------------------------------------------------- */
-.amy-container {
+/* Hero Section Boceto 1 */
+.amy-hero-layout {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 1.5rem;
-    min-height: 700px;
-    height: calc(100vh - 160px);
+    grid-template-columns: 1.15fr 0.95fr;
+    align-items: center;
+    gap: 3.5rem;
+    padding: 2.5rem 0 4.5rem;
+    position: relative;
+}
+
+/* Floating background geometric shapes from Boceto 1 */
+.amy-bg-deco {
+    position: absolute;
+    top: 10%;
+    left: -5%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.amy-bg-diamond-1 {
+    position: absolute;
+    top: 15%;
+    left: 2%;
+    width: 80px;
+    height: 80px;
+    background: rgba(204, 251, 241, 0.45);
+    transform: rotate(45deg);
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+.amy-bg-diamond-2 {
+    position: absolute;
+    bottom: 5%;
+    right: -2%;
+    width: 140px;
+    height: 140px;
+    background: rgba(224, 242, 254, 0.5);
+    transform: rotate(45deg);
+    border-radius: 28px;
+    pointer-events: none;
+}
+
+.amy-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.amy-hero-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    font-weight: 800;
+    color: var(--text-navy);
+    line-height: 1.18;
+    margin-bottom: 1.4rem;
+}
+
+.amy-hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+    max-width: 540px;
+}
+
+.amy-hero-buttons {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.amy-hero-buttons .btn {
+    padding: 13px 30px;
+    font-size: 1.05rem;
 }
 
 /* --------------------------------------------------
-   SIDEBAR DE MODOS
+   HERO CARD ILUSTRACIÓN / ROBOT & DASHBOARD (Boceto 1)
    -------------------------------------------------- */
-.amy-sidebar {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
+.amy-hero-visual {
+    position: relative;
+    z-index: 2;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    justify-content: center;
 }
 
-.sidebar-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+.hero-dashboard-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 1.8rem;
+    box-shadow: 0 20px 45px rgba(20, 184, 166, 0.15), 0 4px 12px rgba(15, 23, 42, 0.05);
+    border: 1.5px solid rgba(45, 212, 191, 0.35);
+    width: 100%;
+    max-width: 480px;
+    transition: transform 0.3s ease;
 }
 
-.sidebar-title {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-dim);
+.hero-dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.robot-image-container {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    background: #e6fffa;
+}
+
+.robot-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Boceto 1 Speech Bubble */
+.hero-speech-bubble {
+    position: absolute;
+    top: -24px;
+    right: -20px;
+    background: #38bdf8;
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 18px 18px 2px 18px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    max-width: 250px;
+    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.35);
+    z-index: 10;
+    animation: floatBubble 4s ease-in-out infinite;
+}
+
+@keyframes floatBubble {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Vitals & Telemetry Widget Boceto 1 */
+.hero-vitals-widget {
+    position: absolute;
+    bottom: -20px;
+    left: -25px;
+    background: #ffffff;
+    border: 1.5px solid var(--teal-light);
+    border-radius: 16px;
+    padding: 12px 18px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: floatWidget 4.5s ease-in-out infinite;
+}
+
+@keyframes floatWidget {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+.vital-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
     font-weight: 700;
 }
 
-.mode-item {
+.vital-stat-row .stat-label {
+    color: var(--teal-dark);
+}
+
+.vital-stat-row .stat-val {
+    color: var(--text-navy);
+}
+
+/* Floating Appointment Badge from Boceto 1 */
+.hero-calendar-badge {
+    position: absolute;
+    bottom: 25px;
+    right: -25px;
+    background: #ffffff;
+    border-left: 4px solid var(--teal-primary);
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+    z-index: 10;
+    font-size: 0.82rem;
+    color: var(--text-navy);
+    font-weight: 600;
+}
+
+.hero-calendar-badge .time {
+    color: var(--cyan-accent);
+    font-weight: 700;
+}
+
+/* --------------------------------------------------
+   SECCIÓN CARACTERÍSTICAS (Boceto 1)
+   -------------------------------------------------- */
+.features-section-boceto {
+    margin-top: 4rem;
+    padding-top: 2rem;
+}
+
+.features-section-boceto h2 {
+    font-size: 2.1rem;
+    color: var(--text-navy);
+    margin-bottom: 2rem;
+}
+
+.clinical-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+}
+
+/* --------------------------------------------------
+   CONSOLA INTERACTIVA AMY AI (Arquitectura Boceto 2 & 3)
+   Conectada a BD y CD
+   -------------------------------------------------- */
+.interactive-amy-section {
+    margin-top: 5.5rem;
+    background: #ffffff;
+    border: 1.5px solid var(--border-teal);
+    border-radius: 28px;
+    padding: 2.5rem;
+    box-shadow: 0 16px 40px rgba(20, 184, 166, 0.1);
+}
+
+.interactive-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    padding: 0.7rem 1rem;
-    border-radius: var(--radius-md);
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1.2rem;
+}
+
+.mode-pills-row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.mode-pill {
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 600;
     cursor: pointer;
+    background: #f1f5f9;
+    color: var(--text-body);
     border: 1px solid transparent;
     transition: all 0.2s ease;
 }
 
-.mode-item:hover,
-.mode-item.active {
-    background: rgba(168, 85, 247, 0.15);
-    border-color: rgba(168, 85, 247, 0.3);
-    color: white;
+.mode-pill:hover {
+    background: var(--teal-soft);
+    color: var(--teal-deep);
 }
 
-/* --------------------------------------------------
-   VENTANA DEL CHAT
-   -------------------------------------------------- */
-.amy-chat-window {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+.mode-pill.active {
+    background: var(--teal-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
 }
 
-.chat-header {
-    padding: 1.2rem 1.8rem;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(15, 23, 42, 0.6);
-}
-
-.amy-status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--emerald);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--emerald);
-}
-
-/* --------------------------------------------------
-   MENSAJES
-   -------------------------------------------------- */
-.chat-messages {
-    flex: 1;
+.chat-box-area {
+    background: var(--teal-bg);
+    border: 1px solid rgba(45, 212, 191, 0.3);
+    border-radius: 20px;
     padding: 1.5rem;
+    height: 380px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
-.message-bubble {
+.chat-msg {
     display: flex;
     gap: 12px;
     max-width: 82%;
+    animation: fadeIn 0.3s ease;
 }
 
-.message-bubble.user {
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-msg.msg-amy {
+    align-self: flex-start;
+}
+
+.chat-msg.msg-user {
     align-self: flex-end;
     flex-direction: row-reverse;
 }
 
-.message-avatar {
+.chat-avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: var(--grad-amy);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
     font-weight: 700;
-    color: white;
+    font-size: 0.9rem;
     flex-shrink: 0;
 }
 
-.message-bubble.user .message-avatar {
-    background: var(--grad-cyan);
+.msg-amy .chat-avatar {
+    background: var(--teal-primary);
+    color: #ffffff;
 }
 
-.message-content {
-    background: rgba(30, 41, 59, 0.7);
-    border: 1px solid var(--border-color);
-    padding: 1rem 1.2rem;
-    border-radius: 16px;
-    border-top-left-radius: 4px;
-    font-size: 0.95rem;
+.msg-user .chat-avatar {
+    background: var(--cyan-accent);
+    color: #ffffff;
+}
+
+.chat-bubble-body {
+    background: #ffffff;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 0.93rem;
+    color: var(--text-navy);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
     line-height: 1.5;
 }
 
-.message-bubble.user .message-content {
-    background: rgba(99, 102, 241, 0.25);
-    border-color: rgba(99, 102, 241, 0.4);
-    border-top-left-radius: 16px;
-    border-top-right-radius: 4px;
+.msg-user .chat-bubble-body {
+    background: var(--cyan-accent);
+    color: #ffffff;
 }
 
-/* --------------------------------------------------
-   ÁREA DE ENTRADA DE TEXTO
-   -------------------------------------------------- */
-.chat-input-area {
-    padding: 1.2rem;
-    border-top: 1px solid var(--border-color);
-    background: rgba(15, 23, 42, 0.6);
+.quick-prompts-row {
     display: flex;
-    gap: 10px;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
 }
 
-.chat-input {
+.quick-prompt-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-teal);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-prompt-btn:hover {
+    background: var(--teal-primary);
+    color: #ffffff;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.chat-input-row input {
     flex: 1;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 0.8rem 1.2rem;
-    color: white;
-    font-size: 0.95rem;
+    padding: 12px 20px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid #cbd5e1;
+    font-size: 1rem;
     outline: none;
+    font-family: var(--font-body);
 }
 
-.chat-input:focus {
-    border-color: var(--purple);
+.chat-input-row input:focus {
+    border-color: var(--teal-primary);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+}
+
+@media (max-width: 900px) {
+    .amy-hero-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .hero-speech-bubble {
+        right: 0;
+    }
+    .hero-calendar-badge {
+        right: 0;
+    }
 }

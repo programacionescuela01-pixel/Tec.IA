@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Empresas & Planes | TEC AI</title>
+    <title>Para Empresas & Planes | TEC AI & Amy</title>
     <meta name="description"
-        content="Soluciones de IA empresarial con TEC AI y Amy. Explora nuestros planes: Simple, Pro y Para Empresas. Seguridad de grado corporativo e integración dedicada.">
+        content="Soluciones para Empresas de TEC AI y Amy. Planes Simple, Pro y Para Empresa. Conexión segura con Base de Datos (BD) y Contenido Dinámico (CD).">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/empresas.css">
 </head>
@@ -15,28 +15,22 @@
     <!-- Navbar Header -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" id="nav-logo">
-                <div class="logo-badge">AI</div>
-                <span>TEC <span class="gradient-text">AI</span></span>
+            <a href="amy.html" class="brand-tab" id="nav-logo">
+                <div class="logo-badge-amy">A</div>
+                <span>Amy</span>
             </a>
+
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link" id="nav-home">Inicio</a></li>
-                <li><a href="foro.html" class="nav-link" id="nav-foro">Foro</a></li>
-                <li><a href="ayuda.html" class="nav-link" id="nav-ayuda">Centro de Ayuda</a></li>
-                <li><a href="empresas.html" class="nav-link active" id="nav-empresas">Para Empresas</a></li>
-                <li>
-                    <a href="amy.html" class="nav-link nav-link-amy" id="nav-amy">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        Amy AI
-                    </a>
-                </li>
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="amy.html" class="nav-link">Amy AI</a></li>
+                <li><a href="empresas.html" class="nav-link active">Para Empresas</a></li>
+                <li><a href="ayuda.html" class="nav-link">Centro de Ayuda</a></li>
+                <li><a href="foro.html" class="nav-link">Foro</a></li>
             </ul>
+
             <div class="nav-actions">
                 <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
-                <a href="amy.html" class="btn btn-primary btn-sm" id="btn-start-nav">Probar Amy</a>
+                <a href="#planes" class="btn btn-primary btn-sm">Ver Planes</a>
             </div>
         </div>
     </header>
@@ -44,235 +38,134 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Hero B2B Section -->
-        <div class="hero">
-            <div class="badge"
-                style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: var(--cyan);">
-                🏢 TEC AI Business</div>
-            <h1>Potencia tu Organización con <span class="cyan-text">Soluciones Para Empresas</span></h1>
-            <p>Integra la inteligencia artificial de Amy directamente en la infraestructura de tu negocio, con seguridad
-                dedicada, cumplimiento normativo y modelos adaptados a tu industria.</p>
-            <div class="hero-actions">
-                <a href="#planes" class="btn btn-primary">Ver Planes de Suscripción</a>
-                <a href="#demo" class="btn btn-outline-cyan">Solicitar Demo Ejecutiva</a>
-            </div>
-        </div>
+        <section class="enterprise-hero">
+            <div class="badge">🏢 Soluciones Hospitalarias & Corporativas</div>
+            <h1>Potencia tu Organización con <span class="gradient-text">TEC AI & Amy</span></h1>
+            <p>Integra la inteligencia artificial clínica en tus sistemas hospitalarios con máxima seguridad de datos,
+                integración directa a Base de Datos (BD) y soporte 24/7.</p>
 
-        <!-- Corporate Features Grid -->
-        <section style="margin-top: 2rem;">
-            <div style="text-align: center; margin-bottom: 2.5rem;">
-                <h2>Ventajas Competitivas para <span class="gradient-text">Tu Empresa</span></h2>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Diseñado para respaldar operaciones de alto
-                    volumen sin comprometer la privacidad.</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="glass-card feature-card">
-                    <div class="feature-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--emerald);">🔒
-                    </div>
-                    <h3>Seguridad de Nivel Corporativo</h3>
-                    <p>Cifrado de extremo a extremo, servidores dedicados y aislamiento de datos para garantizar la
-                        total privacidad de tu negocio.</p>
-                </div>
-
-                <div class="glass-card feature-card">
-                    <div class="feature-icon" style="background: rgba(99, 102, 241, 0.15); color: var(--primary);">🔌
-                    </div>
-                    <h3>Conexión BD & CD Directa</h3>
-                    <p>Conecta la inteligencia de Amy con tus bases de datos (BD) y genera contenido dinámico (CD) para
-                        automatizar la atención al cliente.</p>
-                </div>
-
-                <div class="glass-card feature-card">
-                    <div class="feature-icon" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">⚡
-                    </div>
-                    <h3>SLA Garantizado de 99.9%</h3>
-                    <p>Disponibilidad máxima garantizada por contrato, con tiempo de respuesta prioritario y soporte
-                        técnico 24/7/365.</p>
-                </div>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#planes" class="btn btn-primary">Explorar Planes</a>
+                <a href="#contacto" class="btn btn-outline">Solicitar Demostración</a>
             </div>
         </section>
 
-        <!-- PRICING SECTION (Planes: Simple, Pro, Para Empresas) -->
-        <section id="planes" style="margin-top: 5rem;">
-            <div style="text-align: center;">
-                <div class="badge">💎 Planes Adaptados</div>
-                <h2>Elige el Plan Perfecto para Ti</h2>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Desde proyectos individuales hasta grandes
-                    corporaciones.</p>
+        <!-- PLANES DE SUSCRIPCIÓN (Fiel al Diagrama de Boceto 2 & 3) -->
+        <section id="planes">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="badge">💎 Esquema de Suscripción</div>
+                <h2>Planes Diseñados a tu Medida</h2>
+                <p>Desde profesionales individuales hasta redes hospitalarias de alta complejidad.</p>
             </div>
 
             <div class="pricing-grid">
-                <!-- Plan Simple -->
+                <!-- PLAN 1: SIMPLE (Boceto 2 & 3) -->
                 <div class="pricing-card" id="plan-simple">
-                    <h3>Plan Simple</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.3rem;">Ideal para explorar la
-                        plataforma y usuarios individuales.</p>
+                    <div class="plan-name">Plan Simple</div>
+                    <div class="plan-desc">Para médicos individuales, estudiantes y pequeñas consultas.</div>
                     <div class="price">$0 <span>/ mes</span></div>
                     <ul class="feature-list">
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Acceso básico a Amy AI
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Lectura en el Foro de la comunidad
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Consultas en el Centro de Ayuda
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            50 mensajes diarios con Amy
-                        </li>
+                        <li>Acceso al Asistente Clínico Amy</li>
+                        <li>Hasta 150 resúmenes clínicos por mes</li>
+                        <li>Consulta de guías médicas básicas</li>
+                        <li>Acceso al Foro de la Comunidad</li>
+                        <li>Soporte por Centro de Ayuda</li>
                     </ul>
-                    <a href="amy.html" class="btn btn-secondary" style="width: 100%;">Comenzar Gratis</a>
+                    <a href="amy.html#consola-amy" class="btn btn-secondary" style="width: 100%;">Comenzar Gratis</a>
                 </div>
 
-                <!-- Plan Pro -->
-                <div class="pricing-card" id="plan-pro">
-                    <h3>Plan Pro</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.3rem;">Diseñado para creadores
-                        de contenido y desarrolladores.</p>
-                    <div class="price">$19 <span>/ mes</span></div>
+                <!-- PLAN 2: PRO (Boceto 2 & 3) -->
+                <div class="pricing-card popular" id="plan-pro">
+                    <span class="popular-badge">Recomendado</span>
+                    <div class="plan-name">Plan Pro</div>
+                    <div class="plan-desc">Para consultorios médicos, especialistas y equipos de guardia.</div>
+                    <div class="price">$29 <span>/ mes</span></div>
                     <ul class="feature-list">
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Acceso ilimitado a Amy AI
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Módulo de Base de Datos (BD)
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Creación de temas en el Foro
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Velocidad de respuesta ultra rápida
-                        </li>
+                        <li>Consultas ilimitadas con Amy AI</li>
+                        <li>Módulo de Análisis Predictivo y Detección de Riesgos</li>
+                        <li>Conexión con Base de Datos (BD) local</li>
+                        <li>Generador de Contenido Dinámico (CD) para informes</li>
+                        <li>Soporte técnico prioritario por email y chat</li>
                     </ul>
-                    <button class="btn btn-secondary trigger-login" style="width: 100%;">Obtener Plan Pro</button>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Elegir Plan Pro</a>
                 </div>
 
-                <!-- Plan Para Empresas -->
-                <div class="pricing-card popular" id="plan-empresas">
-                    <div class="popular-badge">Recomendado Empresas</div>
-                    <h3>Plan Para Empresas</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.3rem;">Infraestructura
-                        dedicada y máxima potencia corporativa.</p>
-                    <div class="price" style="color: var(--cyan);">$99 <span>/ mes</span></div>
+                <!-- PLAN 3: PARA EMPRESA (Boceto 2 & 3) -->
+                <div class="pricing-card" id="plan-empresa">
+                    <div class="plan-name">Plan Para Empresa</div>
+                    <div class="plan-desc">Para clínicas, hospitales y centros de salud de alta demanda.</div>
+                    <div class="price">Personalizado</div>
                     <ul class="feature-list">
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Todo lo incluido en el Plan Pro
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Integración BD & Contenido Dinámico (CD)
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Seguridad corporativa & SLA 99.9%
-                        </li>
-                        <li>
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg>
-                            Gerente de cuenta y soporte 24/7
-                        </li>
+                        <li>Infraestructura dedicada en nube privada o local</li>
+                        <li>Integración total con Base de Datos (BD) HL7/FHIR</li>
+                        <li>Entrenamiento y calibración de modelos institucionales</li>
+                        <li>SLA garantizado 99.9% y protocolo de contingencia</li>
+                        <li>Capacitación presencial y mentoría clínica exclusiva</li>
                     </ul>
-                    <a href="#demo" class="btn btn-primary" style="width: 100%;">Contratar Plan Empresas</a>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Contactar Ventas</a>
                 </div>
             </div>
         </section>
 
-        <!-- Form: Request Enterprise Demo -->
-        <section id="demo" class="glass-card" style="margin-top: 5rem; border-color: rgba(99, 102, 241, 0.4);">
-            <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">
-                <h2 style="font-size: 1.8rem;">Solicita una Demo de <span class="cyan-text">TEC AI Para Empresas</span>
-                </h2>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Déjanos tus datos corporativos y un
-                    especialista se pondrá en contacto contigo para coordinar una presentación personalizada.</p>
-            </div>
-
-            <form
-                onsubmit="event.preventDefault(); alert('¡Gracias por tu interés! Un representante de ventas de TEC AI Para Empresas se comunicará contigo.');"
-                style="max-width: 700px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;"
-                    class="form-row">
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="emp-nombre">Nombre Completo</label>
-                        <input type="text" id="emp-nombre" class="form-control" placeholder="Ej. Carlos Mendoza"
-                            required>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="emp-empresa">Nombre de la Empresa</label>
-                        <input type="text" id="emp-empresa" class="form-control" placeholder="Ej. InnovaTech S.A."
-                            required>
+        <!-- SECCIÓN ARQUITECTURA: CONEXIÓN BD & CD (Bocetos 2 y 3) -->
+        <section class="b2b-highlight-card">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;">
+                <div>
+                    <div class="badge">🔌 Arquitectura de Red</div>
+                    <h2>Conexión Directa con Base de Datos (BD) y Contenido Dinámico (CD)</h2>
+                    <p style="margin-top: 1rem; color: var(--text-body);">Tal como define el esquema de arquitectura de
+                        TEC AI, Amy actúa como el motor central que unifica el flujo entre clientes, el portal web y los
+                        servidores de datos.</p>
+                    <p style="margin-top: 0.8rem; color: var(--text-muted);">El módulo de <strong>Base de Datos
+                            (BD)</strong> permite consultar historias clínicas encriptadas sin latencia, mientras que el
+                        módulo de <strong>Contenido Dinámico (CD)</strong> genera resúmenes y turnos en tiempo real con
+                        cero margen de error.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="amy.html#consola-amy" class="btn btn-outline">Probar Conexión en Consola</a>
                     </div>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;"
-                    class="form-row">
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="emp-email">Correo Corporativo</label>
-                        <input type="email" id="emp-email" class="form-control" placeholder="carlos@innovatech.com"
+                <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card);">
+                    <img src="assets/img/medical_guides.jpg" alt="Conexión de Base de Datos y Red Clínica"
+                        style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULARIO DE CONTACTO / DEMO -->
+        <section id="contacto" style="margin-top: 3rem;">
+            <div class="glass-card" style="max-width: 680px; margin: 0 auto; padding: 2.8rem;">
+                <h3 style="text-align: center; margin-bottom: 0.5rem;">Solicita una Demostración para tu Institución
+                </h3>
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">
+                    Nuestro equipo de ingenieros y médicos especialistas te responderá en menos de 24 horas.</p>
+
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Nombre y Apellido</label>
+                        <input type="text" id="contact-name" class="form-control" placeholder="Dr. Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-org">Institución / Clínica / Hospital</label>
+                        <input type="text" id="contact-org" class="form-control" placeholder="Hospital Central"
                             required>
                     </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="emp-tamano">Tamaño de la Empresa</label>
-                        <select id="emp-tamano" class="form-control" style="background: rgba(18, 26, 43, 0.9);"
+                    <div class="form-group">
+                        <label for="contact-email">Correo Electrónico Institucional</label>
+                        <input type="email" id="contact-email" class="form-control" placeholder="jperez@hospital.org"
                             required>
-                            <option value="1-10">1 - 10 empleados</option>
-                            <option value="11-50">11 - 50 empleados</option>
-                            <option value="51-200">51 - 200 empleados</option>
-                            <option value="200+">Más de 200 empleados</option>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-plan">Plan de Interés</label>
+                        <select id="contact-plan" class="form-control" style="background: white;">
+                            <option value="empresa">Plan Para Empresa (Hospitales y Clínicas)</option>
+                            <option value="pro">Plan Pro (Consultorios)</option>
+                            <option value="simple">Plan Simple (Individual)</option>
                         </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="emp-interes">Detalles del Proyecto o Necesidad</label>
-                    <textarea id="emp-interes" class="form-control" rows="3"
-                        placeholder="¿Buscas integración con BD, automatización de contenidos CD o asistente Amy personalizado?"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem;"
-                    id="btn-submit-empresa">Solicitar Asesoría Empresarial</button>
-            </form>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;"
+                        id="btn-submit-contact">Enviar Solicitud de Demostración</button>
+                </form>
+            </div>
         </section>
     </main>
 
@@ -280,58 +173,38 @@
     <div class="modal-overlay" id="login-modal">
         <div class="modal-box">
             <button class="modal-close" id="close-login">&times;</button>
-            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Acceso Corporativo <span class="gradient-text">Amy
                     AI</span></h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Ingresa
-                para gestionar tu suscripción o Plan Empresa.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Inicia
+                sesión con las credenciales de tu institución de salud.</p>
             <form id="login-form">
                 <div class="form-group">
-                    <label for="login-email">Correo Electrónico</label>
-                    <input type="email" id="login-email" class="form-control" placeholder="tu@email.com" required>
+                    <label for="login-email">Correo Electrónico Institucional</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="admin@hospital.org" required>
                 </div>
                 <div class="form-group">
-                    <label for="login-password">Contraseña</label>
+                    <label for="login-password">Contraseña Cifrada</label>
                     <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;"
-                    id="btn-submit-login-emp">Ingresar</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ingresar al
+                    Panel</button>
             </form>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <div class="brand-logo" style="margin-bottom: 1rem;">
-                    <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">AI</div>
-                    <span>TEC AI</span>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.88rem;">Soluciones de IA de grado profesional para
-                    organizaciones modernas.</p>
+        <div class="footer-inner">
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="amy.html">Amy AI</a></li>
+                <li><a href="foro.html">Foro de Empresas</a></li>
+                <li><a href="ayuda.html">Centro de Ayuda</a></li>
+                <li><a href="#planes">Planes</a></li>
+            </ul>
+            <div class="footer-copy">
+                Copyright © 2029 Amy AI Systems & TEC AI. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="foro.html">Foro de la Comunidad</a></li>
-                    <li><a href="ayuda.html">Centro de Ayudas</a></li>
-                    <li><a href="empresas.html">Para Empresas</a></li>
-                    <li><a href="amy.html">Amy AI Assistant</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Planes Disponibles</h4>
-                <ul>
-                    <li><a href="#planes">Plan Simple</a></li>
-                    <li><a href="#planes">Plan Pro</a></li>
-                    <li><a href="#planes">Plan Para Empresas</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 TEC AI Business. Todos los derechos reservados.</p>
-            <p>Sección: Para Empresas</p>
         </div>
     </footer>
 

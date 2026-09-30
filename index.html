@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEC AI | Inteligencia Artificial de Próxima Generación & Amy</title>
-    <meta name="description" content="Plataforma de Inteligencia Artificial TEC AI. Descubre a Amy, nuestro foro de comunidad, centro de ayuda y soluciones personalizadas para empresas.">
+    <title>TEC AI | Ecosistema Inteligente & Asistente Amy</title>
+    <meta name="description"
+        content="Plataforma TEC AI. Conoce a Amy, tu asistente clínico inteligente, foro de empresas, centro de ayuda y soluciones corporativas con conexión BD/CD.">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
+
 <body>
     <!-- Navbar Header -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" id="nav-logo">
-                <div class="logo-badge">AI</div>
-                <span>TEC <span class="gradient-text">AI</span></span>
+            <a href="amy.html" class="brand-tab" id="nav-logo">
+                <div class="logo-badge-amy">A</div>
+                <span>Amy</span>
             </a>
+
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link active" id="nav-home">Inicio</a></li>
-                <li><a href="foro.html" class="nav-link" id="nav-foro">Foro</a></li>
-                <li><a href="ayuda.html" class="nav-link" id="nav-ayuda">Centro de Ayuda</a></li>
-                <li><a href="empresas.html" class="nav-link" id="nav-empresas">Para Empresas</a></li>
-                <li>
-                    <a href="amy.html" class="nav-link nav-link-amy" id="nav-amy">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        Amy AI
-                    </a>
-                </li>
+                <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                <li><a href="amy.html" class="nav-link">Amy AI</a></li>
+                <li><a href="ayuda.html" class="nav-link">Centro de Ayuda</a></li>
+                <li><a href="foro.html" class="nav-link">Foro</a></li>
+                <li><a href="empresas.html">Para Empresas</a></li>
             </ul>
+
             <div class="nav-actions">
                 <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
-                <a href="amy.html" class="btn btn-primary btn-sm" id="btn-start-nav">Probar Amy</a>
+                <a href="amy.html" class="btn btn-primary btn-sm">Conocer a Amy</a>
             </div>
         </div>
     </header>
@@ -40,72 +38,98 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="badge">✨ Descubre la evolución tecnológica de TEC AI</div>
-            <h1>Potencia tu Innovación con <span class="amy-text">Amy AI</span> y nuestra Comunidad</h1>
-            <p>Una ecosistema inteligente completo: interactúa con nuestra asistente virtual Amy, resuelve dudas en el Centro de Ayuda, comparte ideas en el Foro o escala tu infraestructura empresarial.</p>
-            <div class="hero-actions">
-                <a href="amy.html" class="btn btn-primary" id="hero-btn-amy">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    Conocer a Amy AI
-                </a>
-                <a href="empresas.html" class="btn btn-outline-cyan" id="hero-btn-empresas">Soluciones Para Empresas</a>
+        <section class="home-hero">
+            <div class="badge">✨ Ecosistema Oficial TEC AI</div>
+            <h1>Tecnología con Sentido Humano impulsada por <span class="gradient-text">Amy AI</span></h1>
+            <p>Descubre el ecosistema integral de inteligencia artificial: asistente clínico especializado, foro de
+                colaboración institucional, centro de soporte técnico y conectores para bases de datos (BD).</p>
+
+            <div class="home-hero-actions">
+                <a href="amy.html" class="btn btn-primary" id="hero-btn-amy">Explorar Asistente Amy</a>
+                <a href="empresas.html#planes" class="btn btn-outline" id="hero-btn-planes">Ver Planes (Simple, Pro,
+                    Empresa)</a>
             </div>
         </section>
 
-        <!-- Ecosystem Grid Showcase -->
-        <section style="margin-top: 3rem;">
-            <div style="text-align: center; margin-bottom: 2.5rem;">
-                <h2>Explora Nuestro <span class="gradient-text">Ecosistema Completo</span></h2>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Conéctate con todas las secciones diseñadas para impulsar tus proyectos.</p>
+        <!-- BANNER DESTACADO AMY ROBOT (Boceto 1) -->
+        <section class="amy-home-banner">
+            <div>
+                <div class="badge">🤖 Asistente Clínico Inteligente</div>
+                <h2>Hola, soy Amy. Tu asistente especializada.</h2>
+                <p>Nacida para optimizar la eficiencia médica, reducir la carga administrativa y asistir en la toma de
+                    decisiones clínicas con cero margen de error en turnos hospitalarios.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="amy.html" class="btn btn-primary">Prueba Amy Ahora</a>
+                    <a href="amy.html#caracteristicas" class="btn btn-outline">Ver Características</a>
+                </div>
             </div>
-
-            <div class="grid-3">
-                <!-- Card 1: Amy -->
-                <div class="glass-card feature-card" id="card-amy">
-                    <div class="feature-icon" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">⚡</div>
-                    <h3><span class="amy-text">Amy AI</span> - Asistente Virtual</h3>
-                    <p>Asistente inteligente avanzada con módulos para Base de Datos (BD), Contenido Dinámico (CD), programación y resolución de tareas en tiempo real.</p>
-                    <a href="amy.html" class="btn btn-secondary btn-sm" style="margin-top: 1.2rem; width: 100%;">Abrir Asistente Amy →</a>
-                </div>
-
-                <!-- Card 2: Foro -->
-                <div class="glass-card feature-card" id="card-foro">
-                    <div class="feature-icon">💬</div>
-                    <h3>Foro de la Comunidad</h3>
-                    <p>Un espacio interactivo de debate donde creadores y desarrolladores comparten prompts, casos de uso, tutoriales y soluciones innovadoras.</p>
-                    <a href="foro.html" class="btn btn-secondary btn-sm" style="margin-top: 1.2rem; width: 100%;">Entrar al Foro →</a>
-                </div>
-
-                <!-- Card 3: Centro de Ayuda -->
-                <div class="glass-card feature-card" id="card-ayuda">
-                    <div class="feature-icon" style="background: rgba(6, 182, 212, 0.15); color: var(--cyan);">❓</div>
-                    <h3>Centro de Ayuda</h3>
-                    <p>Encuentra respuestas a preguntas frecuentes, guías de configuración, tutoriales paso a paso y documentación del sistema TEC AI.</p>
-                    <a href="ayuda.html" class="btn btn-secondary btn-sm" style="margin-top: 1.2rem; width: 100%;">Ir al Centro de Ayuda →</a>
-                </div>
+            <div style="text-align: center;">
+                <img src="assets/img/amy_robot.jpg" alt="Amy Robot Asistente"
+                    style="width: 100%; max-width: 320px; border-radius: 20px; box-shadow: 0 10px 25px rgba(20, 184, 166, 0.25);">
             </div>
         </section>
 
-        <!-- Enterprise Banner -->
-        <section style="margin-top: 4rem;">
-            <div class="glass-card" style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%); border-color: rgba(99, 102, 241, 0.3);">
-                <div style="max-width: 600px;">
-                    <div class="badge" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: var(--cyan);">🏢 Soluciones B2B</div>
-                    <h2>¿Necesitas TEC AI <span class="cyan-text">Para Empresas</span>?</h2>
-                    <p style="color: var(--text-muted); margin-top: 0.8rem;">Ofrecemos integraciones dedicadas, modelos entrenados a medida, alta seguridad de datos y soporte técnico especializado 24/7.</p>
+        <!-- ARQUITECTURA DEL ECOSISTEMA (Fiel al Diagrama de Boceto 2 & 3) -->
+        <section class="architecture-showcase" id="arquitectura">
+            <div class="arch-header">
+                <div class="badge">🗺️ Mapa de Arquitectura</div>
+                <h2>Explora las Secciones del Ecosistema</h2>
+                <p style="color: var(--text-muted); margin-top: 0.4rem;">Conexión directa entre el Cliente, el Portal
+                    Index, Amy, Base de Datos (BD) y Servicios.</p>
+            </div>
+
+            <div class="arch-flow-grid">
+                <!-- Nodo 1: Amy AI -->
+                <div class="arch-card">
+                    <div>
+                        <div class="arch-icon">🩺</div>
+                        <h4>Amy AI</h4>
+                        <p>Asistente clínico inteligente con módulos de historias clínicas, BD y CD en tiempo real.</p>
+                    </div>
+                    <a href="amy.html" class="btn btn-secondary btn-sm" style="width: 100%;">Abrir Amy →</a>
                 </div>
-                <a href="empresas.html" class="btn btn-primary" id="btn-banner-empresas">Ver Planes y Soluciones</a>
+
+                <!-- Nodo 2: Centro de Ayuda -->
+                <div class="arch-card">
+                    <div>
+                        <div class="arch-icon">❓</div>
+                        <h4>Centro de Ayuda</h4>
+                        <p>Preguntas frecuentes, guías clínicas, gestión de pacientes y soporte técnico.</p>
+                    </div>
+                    <a href="ayuda.html" class="btn btn-secondary btn-sm" style="width: 100%;">Ver Ayuda →</a>
+                </div>
+
+                <!-- Nodo 3: Foro de Empresas -->
+                <div class="arch-card">
+                    <div>
+                        <div class="arch-icon">💬</div>
+                        <h4>Foro de Empresas</h4>
+                        <p>Comunidad institucional, casos de éxito, normativas y mentores expertos.</p>
+                    </div>
+                    <a href="foro.html" class="btn btn-secondary btn-sm" style="width: 100%;">Entrar al Foro →</a>
+                </div>
+
+                <!-- Nodo 4: Para Empresas & Planes -->
+                <div class="arch-card">
+                    <div>
+                        <div class="arch-icon">🏢</div>
+                        <h4>Para Empresas & Planes</h4>
+                        <p>Planes Simple, Pro y Para Empresa con conectores dedicados para Base de Datos (BD).</p>
+                    </div>
+                    <a href="empresas.html" class="btn btn-secondary btn-sm" style="width: 100%;">Ver Planes →</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Modal Login -->
+    <!-- Modal Login (Conectado a BD) -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal-box">
             <button class="modal-close" id="close-login">&times;</button>
-            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC AI</span></h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Accede a Amy AI, guarda tu historial y participa en el Foro.</p>
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC
+                    AI</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">
+                Autenticación segura vinculada a la Base de Datos central.</p>
             <form id="login-form">
                 <div class="form-group">
                     <label for="login-email">Correo Electrónico</label>
@@ -115,55 +139,30 @@
                     <label for="login-password">Contraseña</label>
                     <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btn-submit-login">Ingresar a TEC AI</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ingresar al
+                    Sistema</button>
             </form>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <div class="brand-logo" style="margin-bottom: 1rem;">
-                    <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">AI</div>
-                    <span>TEC AI</span>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.88rem;">Impulsando la nueva era de desarrollo e inteligencia artificial.</p>
+        <div class="footer-inner">
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="amy.html">Amy AI</a></li>
+                <li><a href="foro.html">Foro de Empresas</a></li>
+                <li><a href="ayuda.html">Centro de Ayuda</a></li>
+                <li><a href="empresas.html#planes">Planes</a></li>
+            </ul>
+            <div class="footer-copy">
+                Copyright © 2029 Amy AI Systems & TEC AI. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="foro.html">Foro de la Comunidad</a></li>
-                    <li><a href="ayuda.html">Centro de Ayudas</a></li>
-                    <li><a href="empresas.html">Para Empresas</a></li>
-                    <li><a href="amy.html">Amy AI Assistant</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Planes</h4>
-                <ul>
-                    <li><a href="empresas.html#planes">Plan Simple (Gratis)</a></li>
-                    <li><a href="empresas.html#planes">Plan Pro</a></li>
-                    <li><a href="empresas.html#planes">Plan Para Empresas</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Soporte</h4>
-                <ul>
-                    <li><a href="ayuda.html">Preguntas Frecuentes</a></li>
-                    <li><a href="foro.html">Reportar un problema</a></li>
-                    <li><a href="ayuda.html#contacto">Contacto Directo</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 TEC AI & Amy System. Todos los derechos reservados.</p>
-            <p>Diseño web educativo | 5° Año LDW</p>
         </div>
     </footer>
 
     <script src="assets/js/shared.js"></script>
     <script src="assets/js/index.js"></script>
 </body>
+
 </html>

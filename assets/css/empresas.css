@@ -1,77 +1,104 @@
 /* ==========================================================================
-   EMPRESAS.CSS — Estilos específicos de empresas.html
-   Depende de: base.css
+   EMPRESAS.CSS — Soluciones Para Empresas & Planes (Boceto 2 & 3)
    ========================================================================== */
 
-/* --------------------------------------------------
-   GRILLA DE PRECIOS / PLANES
-   -------------------------------------------------- */
+.enterprise-hero {
+    text-align: center;
+    padding: 2rem 0 3.5rem;
+}
+
+.enterprise-hero h1 {
+    font-size: clamp(2.3rem, 4vw, 3.2rem);
+    color: var(--text-navy);
+    margin-bottom: 1rem;
+}
+
+.enterprise-hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 0 auto 2rem;
+}
+
+/* Grilla de Planes: Simple, Pro, Para Empresa (Boceto 2 & 3) */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
 }
 
 .pricing-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    border: 1.5px solid rgba(226, 232, 240, 0.95);
     border-radius: var(--radius-lg);
     padding: 2.5rem 2rem;
     position: relative;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow-soft);
     transition: all 0.3s ease;
 }
 
-.pricing-card.popular {
-    border-color: var(--primary);
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.25);
-    background: linear-gradient(180deg, rgba(30, 37, 65, 0.8) 0%, rgba(15, 22, 38, 0.9) 100%);
+.pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(20, 184, 166, 0.15);
 }
 
-/* --------------------------------------------------
-   BADGE "RECOMENDADO"
-   -------------------------------------------------- */
+.pricing-card.popular {
+    border-color: var(--teal-primary);
+    box-shadow: 0 12px 35px rgba(20, 184, 166, 0.2);
+    background: linear-gradient(180deg, #ffffff 0%, var(--teal-bg) 100%);
+}
+
 .popular-badge {
     position: absolute;
-    top: -12px;
+    top: -14px;
     right: 24px;
-    background: var(--grad-primary);
-    color: white;
-    font-size: 0.75rem;
+    background: var(--teal-primary);
+    color: #ffffff;
+    font-size: 0.78rem;
     font-weight: 700;
-    padding: 0.25rem 0.9rem;
+    padding: 4px 14px;
     border-radius: var(--radius-full);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
 }
 
-/* --------------------------------------------------
-   PRECIO
-   -------------------------------------------------- */
+.plan-name {
+    font-size: 1.4rem;
+    color: var(--text-navy);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.plan-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
 .price {
     font-size: 2.8rem;
     font-weight: 800;
     font-family: var(--font-heading);
-    margin: 1.2rem 0;
+    color: var(--text-navy);
+    margin: 1.4rem 0 0.8rem;
 }
 
 .price span {
     font-size: 1rem;
-    color: var(--text-dim);
+    color: var(--text-muted);
     font-weight: 400;
 }
 
-/* --------------------------------------------------
-   LISTA DE CARACTERÍSTICAS DEL PLAN
-   -------------------------------------------------- */
 .feature-list {
     list-style: none;
     margin: 1.5rem 0 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.9rem;
     flex: 1;
 }
 
@@ -79,11 +106,23 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    font-size: 0.92rem;
+    color: var(--text-body);
 }
 
-.feature-list li svg {
-    color: var(--emerald);
-    flex-shrink: 0;
+.feature-list li::before {
+    content: "✓";
+    color: var(--teal-primary);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+/* Feature Matrix & Architecture B2B */
+.b2b-highlight-card {
+    background: #ffffff;
+    border: 1.5px solid var(--border-teal);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 4rem;
+    box-shadow: var(--shadow-soft);
 }

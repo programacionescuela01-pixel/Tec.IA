@@ -3,179 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amy AI | Asistente de Inteligencia Artificial</title>
-    <meta name="description" content="Interactúa con Amy AI, tu asistente virtual inteligente. Consulta bases de datos (BD), genera contenido dinámico (CD), programa y optimiza tus flujos de trabajo.">
+    <title>Amy AI - Tu Asistente Clínico Inteligente</title>
+    <meta name="description" content="Amy AI - Asistente clínico inteligente y especializado. Optimiza la eficiencia clínica, reduce la carga administrativa y mejora la toma de decisiones en salud.">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/amy.css">
 </head>
 <body>
-    <!-- Navbar Header -->
+    <!-- Navbar Header (Estilo Pestaña Orgánica Boceto 1) -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" id="nav-logo">
-                <div class="logo-badge">AI</div>
-                <span>TEC <span class="gradient-text">AI</span></span>
+            <a href="amy.html" class="brand-tab" id="brand-amy-logo">
+                <div class="logo-badge-amy">A</div>
+                <span>Amy</span>
             </a>
+            
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link" id="nav-home">Inicio</a></li>
-                <li><a href="foro.html" class="nav-link" id="nav-foro">Foro</a></li>
-                <li><a href="ayuda.html" class="nav-link" id="nav-ayuda">Centro de Ayuda</a></li>
-                <li><a href="empresas.html" class="nav-link" id="nav-empresas">Para Empresas</a></li>
-                <li>
-                    <a href="amy.html" class="nav-link nav-link-amy active" id="nav-amy">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        Amy AI
-                    </a>
-                </li>
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="#que-soy" class="nav-link">¿Qué soy?</a></li>
+                <li><a href="#caracteristicas" class="nav-link">Funciones</a></li>
+                <li><a href="empresas.html#planes" class="nav-link">Precios</a></li>
+                <li><a href="ayuda.html" class="nav-link">Centro de Ayuda</a></li>
+                <li><a href="foro.html" class="nav-link">Foro</a></li>
             </ul>
+
             <div class="nav-actions">
-                <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
-                <a href="empresas.html#planes" class="btn btn-primary btn-sm" id="btn-planes-nav">Ver Planes</a>
+                <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-header">Iniciar Sesión</button>
+                <a href="#consola-amy" class="btn btn-primary btn-sm" id="btn-empezar-gratis">Empezar Gratis</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content: Amy Interface -->
-    <main class="main-content" style="max-width: 1300px;">
-        <div class="amy-container">
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Floating Decoratives from Boceto 1 -->
+        <div class="amy-bg-deco"></div>
+        <div class="amy-bg-diamond-1"></div>
+        <div class="amy-bg-diamond-2"></div>
+
+        <!-- HERO SECTION (Fiel a Boceto 1) -->
+        <section class="amy-hero-layout" id="hero">
+            <div class="amy-hero-content">
+                <h1 class="amy-hero-title">Hola, soy Amy. Tu asistente clínico inteligente y especializado.</h1>
+                <p class="amy-hero-subtitle">Optimiza la eficiencia clínica, reduce la carga administrativa y mejora la toma de decisiones con IA diseñada para la práctica médica.</p>
+                
+                <div class="amy-hero-buttons">
+                    <a href="#consola-amy" class="btn btn-primary" id="btn-prueba-amy">Prueba Amy Ahora</a>
+                    <a href="#caracteristicas" class="btn btn-outline" id="btn-ver-funciona">Ver Cómo Funciona</a>
+                </div>
+            </div>
+
+            <!-- HERO DASHBOARD & ROBOT MASCOT (Boceto 1) -->
+            <div class="amy-hero-visual">
+                <div class="hero-dashboard-card">
+                    <!-- Speech Bubble Boceto 1 -->
+                    <div class="hero-speech-bubble">
+                        💬 "Amy, resume la historia clínica del Paciente S.C. para hoy."
+                    </div>
+
+                    <!-- Robot Image -->
+                    <div class="robot-image-container">
+                        <img src="assets/img/amy_robot.jpg" alt="Amy - Asistente Clínico Inteligente Robot">
+                    </div>
+
+                    <!-- Vitals Telemetry Widget Boceto 1 -->
+                    <div class="hero-vitals-widget">
+                        <div class="pulse-line-container">
+                            <svg width="60" height="24" viewBox="0 0 60 24" fill="none">
+                                <path class="pulse-svg" d="M0 12h15l3-8 6 16 4-12 3 6 4-2h25" stroke="#14b8a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>120 bpm</span>
+                        </div>
+                        <div class="vital-stat-row">
+                            <span class="stat-label">Haa:</span> <span class="stat-val">Estable</span>
+                            <span class="stat-label" style="margin-left: 6px;">BPP:</span> <span class="stat-val">120/80</span>
+                        </div>
+                    </div>
+
+                    <!-- Agenda / Calendar Badge Boceto 1 -->
+                    <div class="hero-calendar-badge">
+                        <div>📅 <span class="time">10:00 AM</span> - Seguimiento Paciente A.G.</div>
+                        <div style="margin-top: 4px;">📅 <span class="time">11:30 AM</span> - Revisión Paciente M.S.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CARACTERÍSTICAS (Las 3 tarjetas exactas de Boceto 1) -->
+        <section class="features-section-boceto" id="caracteristicas">
+            <h2>Características</h2>
             
-            <!-- Left Sidebar: Modes & Links -->
-            <aside class="amy-sidebar">
-                <div class="sidebar-block">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
-                        <div class="logo-badge" style="width: 32px; height: 32px; font-size: 1rem; background: var(--grad-amy);">A</div>
-                        <div>
-                            <h3 style="font-size: 1.1rem; line-height: 1.1;">Amy AI</h3>
-                            <span style="font-size: 0.75rem; color: var(--emerald);">● Sistema En Línea</span>
-                        </div>
-                    </div>
+            <div class="clinical-features-grid">
+                <!-- Tarjeta 1: Resumen Clínico y Notas -->
+                <div class="feature-card-clinical card-clinical-blue" id="feature-resumen">
+                    <div class="clinical-icon-box">📋</div>
+                    <h3>Resumen Clínico y Notas</h3>
+                    <p>Genera automáticamente notas de consulta y resúmenes de pacientes detallados con precisión terminológica.</p>
                 </div>
 
-                <!-- Mode Selectors (BD, CD, General, Dev) -->
-                <div class="sidebar-block">
-                    <span class="sidebar-title">Módulos Especializados</span>
-                    <div class="mode-item active" data-mode="General" id="mode-general">
-                        <span>✨</span> Modo General
-                    </div>
-                    <div class="mode-item" data-mode="Base de Datos (BD)" id="mode-bd">
-                        <span>🗄️</span> Módulo BD (Base de Datos)
-                    </div>
-                    <div class="mode-item" data-mode="Contenido Dinámico (CD)" id="mode-cd">
-                        <span>⚡</span> Módulo CD (Contenido Dinámico)
-                    </div>
-                    <div class="mode-item" data-mode="Programación" id="mode-dev">
-                        <span>💻</span> Programación & Código
-                    </div>
+                <!-- Tarjeta 2: Guías y Evidencia Médica -->
+                <div class="feature-card-clinical card-clinical-mint" id="feature-guias">
+                    <div class="clinical-icon-box">📖</div>
+                    <h3>Guías y Evidencia Médica</h3>
+                    <p>Accede instantáneamente a guías de práctica clínica y datos de investigación actualizados en tiempo real.</p>
                 </div>
 
-                <!-- Quick Navigation Links -->
-                <div class="sidebar-block" style="margin-top: auto;">
-                    <span class="sidebar-title">Acciones de Usuario</span>
-                    <button class="btn btn-secondary btn-sm trigger-login" style="width: 100%; justify-content: flex-start; text-align: left;" id="sidebar-login">
-                        🔑 Iniciar Sesión / Cuenta
-                    </button>
-                    <a href="empresas.html#planes" class="btn btn-outline-cyan btn-sm" style="width: 100%; justify-content: flex-start;" id="sidebar-planes">
-                        💎 Planes (Simple, Pro, Empresa)
-                    </a>
+                <!-- Tarjeta 3: Análisis Predictivo de Pacientes -->
+                <div class="feature-card-clinical card-clinical-teal" id="feature-predictivo">
+                    <div class="clinical-icon-box">📈</div>
+                    <h3>Análisis Predictivo de Pacientes</h3>
+                    <p>Identifica tendencias de salud y predice riesgos para una mejor atención preventiva y personalizada.</p>
                 </div>
-            </aside>
+            </div>
+        </section>
 
-            <!-- Main Chat Workspace Window -->
-            <section class="amy-chat-window">
-                <!-- Chat Header -->
-                <div class="chat-header">
-                    <div class="amy-status">
-                        <div class="status-dot"></div>
-                        <div>
-                            <h4 id="current-mode-name" style="font-size: 1rem;">Modo: General</h4>
-                            <span style="font-size: 0.8rem; color: var(--text-dim);">TEC AI Core Engine v3.5</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 0.8rem;">
-                        <a href="ayuda.html" class="btn btn-secondary btn-sm" title="Centro de Ayuda">❓ Ayuda</a>
-                        <a href="foro.html" class="btn btn-secondary btn-sm" title="Ir al Foro">💬 Foro</a>
+        <!-- SECCIÓN ¿QUÉ SOY? -->
+        <section style="margin-top: 5rem;" id="que-soy">
+            <div class="glass-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;">
+                <div>
+                    <div class="badge">💡 Origen & Visión Humana</div>
+                    <h2>Una IA nacida para ser tu mejor aliada</h2>
+                    <p style="margin-top: 1rem; color: var(--text-body);">Amy nació con un propósito claro: transmitir cercanía, confianza y soporte incondicional al equipo médico. Al pronunciar "Amy", suena exactamente igual que la palabra <em>amigo</em>.</p>
+                    <p style="margin-top: 0.8rem; color: var(--text-muted);">Desarrollada bajo la arquitectura de TEC AI, Amy integra módulos directos con <strong>Base de Datos (BD)</strong> protegida y generadores de <strong>Contenido Dinámico (CD)</strong> para brindar respuestas en milisegundos con cero margen de error en turnos críticos.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="empresas.html#planes" class="btn btn-primary btn-sm">Ver Planes Disponibles</a>
+                        <a href="foro.html" class="btn btn-secondary btn-sm">Ir al Foro Comunitario</a>
                     </div>
                 </div>
+                <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card);">
+                    <img src="assets/img/clinical_dashboard.jpg" alt="Centro de comando clínico interactivo con Amy" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </section>
 
-                <!-- Chat Messages Stream -->
-                <div class="chat-messages" id="amy-messages">
-                    <!-- Amy Welcome Message -->
-                    <div class="message-bubble">
-                        <div class="message-avatar">Amy</div>
-                        <div class="message-content">
-                            ¡Hola! Soy **Amy**, tu asistente interactiva de **TEC AI**. 🤖✨
-                            <br><br>
-                            Puedo ayudarte a resolver dudas, trabajar con el módulo de **Base de Datos (BD)**, generar **Contenido Dinámico (CD)** o guiarte sobre los **Planes** disponibles.
-                            <br><br>
-                            *¿Qué te gustaría explorar hoy? Escribe tu mensaje a continuación.*
-                        </div>
+        <!-- CONSOLA INTERACTIVA AMY AI (Arquitectura Boceto 2 & 3: BD, CD, Planes) -->
+        <section class="interactive-amy-section" id="consola-amy">
+            <div class="interactive-header">
+                <div>
+                    <div class="badge" style="margin-bottom: 0.4rem;">⚡ Asistente en Tiempo Real</div>
+                    <h2>Interactúa con Amy en Directo</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Prueba los módulos de consulta clínica, Base de Datos (BD) y Contenido Dinámico (CD).</p>
+                </div>
+
+                <div class="mode-pills-row">
+                    <button class="mode-pill active" data-mode="clinico">🩺 Asistente Clínico</button>
+                    <button class="mode-pill" data-mode="bd">🗄️ Base de Datos (BD)</button>
+                    <button class="mode-pill" data-mode="cd">⚡ Contenido Dinámico (CD)</button>
+                </div>
+            </div>
+
+            <!-- Chat Stream Area -->
+            <div class="chat-box-area" id="amy-chat-box">
+                <div class="chat-msg msg-amy">
+                    <div class="chat-avatar">A</div>
+                    <div class="chat-bubble-body">
+                        ¡Hola! Soy <strong>Amy</strong>, tu asistente clínica especializada. Estoy lista para asistirte con historias clínicas, guías médicas actualizadas o consultas a la Base de Datos del hospital. ¿En qué puedo colaborar contigo hoy?
                     </div>
                 </div>
+            </div>
 
-                <!-- Chat Input Controls -->
-                <div class="chat-input-area">
-                    <input type="text" id="amy-chat-input" class="chat-input" placeholder="Pregunta algo a Amy (ej: 'Háblame de los módulos BD y CD' o '¿Qué planes tienen?')...">
-                    <button class="btn btn-primary" id="amy-send-btn">
-                        <span>Enviar</span>
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </button>
-                </div>
-            </section>
-        </div>
+            <!-- Quick Clinical Prompts (Inspirados en Bocetos) -->
+            <div class="quick-prompts-row">
+                <button class="quick-prompt-btn" data-query="Resume la historia clínica del Paciente S.C. para hoy">📋 Resumen Paciente S.C.</button>
+                <button class="quick-prompt-btn" data-query="¿Cuáles son las guías de evidencia médica para hipertensión nivel 2?">📖 Guías médicas hipertensión</button>
+                <button class="quick-prompt-btn" data-query="Realizar análisis predictivo de riesgo para paciente con 120 bpm">📈 Análisis predictivo riesgo</button>
+                <button class="quick-prompt-btn" data-query="Consultar disponibilidad en Base de Datos (BD) de camas de terapia">🗄️ Consultar BD camas</button>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="chat-input-row">
+                <input type="text" id="amy-user-input" placeholder="Escribe tu mensaje para Amy...">
+                <button class="btn btn-primary" id="btn-send-amy">Enviar</button>
+            </div>
+        </section>
     </main>
 
     <!-- Modal Login -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal-box">
             <button class="modal-close" id="close-login">&times;</button>
-            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC AI</span></h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Guarda tus conversaciones con Amy y personaliza tus preferencias.</p>
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Acceso Profesional <span class="gradient-text">Amy AI</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Conéctate a la red hospitalaria y guarda tus notas clínicas.</p>
             <form id="login-form">
                 <div class="form-group">
-                    <label for="login-email">Correo Electrónico</label>
-                    <input type="email" id="login-email" class="form-control" placeholder="tu@email.com" required>
+                    <label for="login-email">Correo Institucional / Profesional</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="doctor@hospital.org" required>
                 </div>
                 <div class="form-group">
-                    <label for="login-password">Contraseña</label>
+                    <label for="login-password">Contraseña Cifrada</label>
                     <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btn-submit-login-amy">Ingresar a Amy</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ingresar al Sistema</button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (Fiel a Boceto 1) -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <div class="brand-logo" style="margin-bottom: 1rem;">
-                    <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem; background: var(--grad-amy);">A</div>
-                    <span>Amy AI</span>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.88rem;">La inteligencia artificial que evoluciona contigo.</p>
+        <div class="footer-inner">
+            <ul class="footer-nav">
+                <li><a href="#hero">Privacidad</a></li>
+                <li><a href="#hero">Términos</a></li>
+                <li><a href="ayuda.html">Soporte</a></li>
+                <li><a href="index.html">TEC AI Portal</a></li>
+                <li><a href="empresas.html#planes">Planes & Precios</a></li>
+            </ul>
+            <div class="footer-copy">
+                Copyright © 2029 Amy AI Systems & TEC AI. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="foro.html">Foro de la Comunidad</a></li>
-                    <li><a href="ayuda.html">Centro de Ayudas</a></li>
-                    <li><a href="empresas.html">Para Empresas</a></li>
-                    <li><a href="amy.html">Amy AI Assistant</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Módulos Amy</h4>
-                <ul>
-                    <li><a href="amy.html">Módulo Base de Datos (BD)</a></li>
-                    <li><a href="amy.html">Módulo Contenido Dinámico (CD)</a></li>
-                    <li><a href="empresas.html#planes">Planes: Simple, Pro, Empresa</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Amy AI Core. Todos los derechos reservados.</p>
-            <p>Sección: Amy AI Console</p>
         </div>
     </footer>
 

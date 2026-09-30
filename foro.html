@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro de la Comunidad | TEC AI</title>
-    <meta name="description" content="Participa en el Foro de TEC AI. Intercambia ideas, optimiza prompts para Amy, consulta dudas con desarrolladores y comparte tus avances.">
+    <title>Foro de Empresas Amy | TEC AI</title>
+    <meta name="description" content="Foro oficial de Empresas Amy y TEC AI. Hilos de discusión, comunidad empresarial, recursos destacados y mentores especializados en IA y medicina.">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/foro.css">
 </head>
@@ -12,244 +12,248 @@
     <!-- Navbar Header -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" id="nav-logo">
-                <div class="logo-badge">AI</div>
-                <span>TEC <span class="gradient-text">AI</span></span>
+            <a href="amy.html" class="brand-tab" id="nav-logo">
+                <div class="logo-badge-amy">A</div>
+                <span>Amy</span>
             </a>
+            
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link" id="nav-home">Inicio</a></li>
-                <li><a href="foro.html" class="nav-link active" id="nav-foro">Foro</a></li>
-                <li><a href="ayuda.html" class="nav-link" id="nav-ayuda">Centro de Ayuda</a></li>
-                <li><a href="empresas.html" class="nav-link" id="nav-empresas">Para Empresas</a></li>
-                <li>
-                    <a href="amy.html" class="nav-link nav-link-amy" id="nav-amy">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        Amy AI
-                    </a>
-                </li>
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="amy.html" class="nav-link">Amy AI</a></li>
+                <li><a href="foro.html" class="nav-link active">Foro de Empresas</a></li>
+                <li><a href="ayuda.html" class="nav-link">Centro de Ayuda</a></li>
+                <li><a href="empresas.html">Para Empresas</a></li>
             </ul>
+
             <div class="nav-actions">
                 <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
-                <a href="amy.html" class="btn btn-primary btn-sm" id="btn-start-nav">Probar Amy</a>
+                <button class="btn btn-primary btn-sm" id="btn-nuevo-hilo">+ Nuevo Debate</button>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Forum Header -->
-        <div style="text-align: center; margin-bottom: 2.5rem;">
-            <div class="badge">💬 Comunidad TEC AI</div>
-            <h1>Foro de <span class="gradient-text">Debate & Tecnología</span></h1>
-            <p style="color: var(--text-muted); max-width: 650px; margin: 0.5rem auto 0;">Conéctate con creadores, explora casos de uso de Amy AI y comparte conocimientos con la comunidad.</p>
-        </div>
+        <!-- Forum Hero Section (Boceto 6) -->
+        <section class="forum-hero-section">
+            <div class="badge">💬 Espacio B2B & Red Hospitalaria</div>
+            <h1>Foro de Empresas Amy</h1>
+            <p>El punto de encuentro entre instituciones de salud, empresas tecnológicas y desarrolladores del ecosistema TEC AI.</p>
 
-        <!-- Search & Filter Controls -->
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="search-input" class="search-input" placeholder="Buscar por tema, palabra clave o autor...">
-        </div>
+            <!-- Search Bar from Boceto 6 -->
+            <div class="search-box-pill">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="forum-search-input" placeholder="Buscar temas, instituciones o mentores (ej. 'predictivo', 'cumplimiento', 'Pedro')...">
+            </div>
+        </section>
 
-        <div class="tag-filters">
-            <button class="tag-btn active" data-category="all">Todos los temas</button>
-            <button class="tag-btn" data-category="prompts">Prompts & Amy</button>
-            <button class="tag-btn" data-category="dev">Programación</button>
-            <button class="tag-btn" data-category="empresas">Empresas</button>
-            <button class="tag-btn" data-category="novedades">Novedades</button>
-        </div>
-
-        <!-- Layout Grid: Main Forum Threads & Sidebar -->
-        <div style="display: grid; grid-template-columns: 1fr 320px; gap: 2rem;" class="forum-layout">
+        <!-- 4-QUADRANT GRID LAYOUT DE BOCETO 6 -->
+        <section class="boceto6-quadrant-grid">
             
-            <!-- Threads Column -->
-            <div class="forum-thread-list">
-                <!-- Thread 1 -->
-                <div class="forum-thread-card" data-category="prompts">
-                    <div class="thread-main">
-                        <div class="avatar" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">JA</div>
-                        <div class="thread-info">
-                            <h4>¿Cómo optimizar las respuestas de Amy en la gestión de Base de Datos (BD)?</h4>
-                            <div class="thread-meta">
-                                <span>Por <strong>Josué A.</strong></span> • 
-                                <span>Hace 25 min</span> • 
-                                <span class="badge" style="padding: 0.1rem 0.6rem; font-size: 0.75rem;">Prompts & Amy</span>
+            <!-- CUADRANTE 1 (Arriba Izquierda): Hilos Populares -->
+            <div class="quadrant-card" id="cuadrante-hilos">
+                <div>
+                    <h3 class="quadrant-title">📌 Hilos Populares</h3>
+                    <div class="popular-threads-list" id="threads-container">
+                        <!-- Hilo 1: Guía de Amy -->
+                        <div class="thread-item-boceto" data-topic="guia">
+                            <div>
+                                <div class="thread-title">Guía de Amy: Implementación hospitalaria segura</div>
+                                <div class="thread-subtitle">Por <strong>Ing. Julián Benítez</strong> • Hace 40 min • 28 respuestas</div>
                             </div>
+                            <div class="thread-votes-pill">▲ <span class="vote-num">89</span></div>
                         </div>
-                    </div>
-                    <div class="thread-stats">
-                        <button class="vote-btn" id="vote-btn-1">
-                            ▲ <span class="vote-count">42</span>
-                        </button>
-                        <div class="stat-box">
-                            <span class="stat-num">18</span>
-                            <span>respuestas</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Thread 2 -->
-                <div class="forum-thread-card" data-category="dev">
-                    <div class="thread-main">
-                        <div class="avatar" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">MC</div>
-                        <div class="thread-info">
-                            <h4>Integración de la API de Amy con aplicaciones React y Node.js</h4>
-                            <div class="thread-meta">
-                                <span>Por <strong>Matías C.</strong></span> • 
-                                <span>Hace 2 horas</span> • 
-                                <span class="badge" style="padding: 0.1rem 0.6rem; font-size: 0.75rem;">Programación</span>
+                        <!-- Hilo 2: Análisis predictivo de Amy -->
+                        <div class="thread-item-boceto" data-topic="predictivo">
+                            <div>
+                                <div class="thread-title">Análisis predictivo de Amy en triaje de emergencias</div>
+                                <div class="thread-subtitle">Por <strong>Dra. María Fernández</strong> • Hace 2 horas • 45 respuestas</div>
                             </div>
+                            <div class="thread-votes-pill">▲ <span class="vote-num">124</span></div>
                         </div>
-                    </div>
-                    <div class="thread-stats">
-                        <button class="vote-btn" id="vote-btn-2">
-                            ▲ <span class="vote-count">89</span>
-                        </button>
-                        <div class="stat-box">
-                            <span class="stat-num">34</span>
-                            <span>respuestas</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Thread 3 -->
-                <div class="forum-thread-card" data-category="empresas">
-                    <div class="thread-main">
-                        <div class="avatar" style="background: linear-gradient(135deg, #10b981, #059669);">LR</div>
-                        <div class="thread-info">
-                            <h4>Experiencia con el Plan Para Empresas y conexión a Contenido Dinámico (CD)</h4>
-                            <div class="thread-meta">
-                                <span>Por <strong>Laura R.</strong></span> • 
-                                <span>Hace 5 horas</span> • 
-                                <span class="badge" style="padding: 0.1rem 0.6rem; font-size: 0.75rem;">Empresas</span>
+                        <!-- Hilo 3: Conexión BD y CD -->
+                        <div class="thread-item-boceto" data-topic="bd">
+                            <div>
+                                <div class="thread-title">Optimización de consultas a la Base de Datos (BD) central</div>
+                                <div class="thread-subtitle">Por <strong>Ing. Pedro Alarcón</strong> • Hace 5 horas • 32 respuestas</div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="thread-stats">
-                        <button class="vote-btn" id="vote-btn-3">
-                            ▲ <span class="vote-count">65</span>
-                        </button>
-                        <div class="stat-box">
-                            <span class="stat-num">21</span>
-                            <span>respuestas</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Thread 4 -->
-                <div class="forum-thread-card" data-category="novedades">
-                    <div class="thread-main">
-                        <div class="avatar" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">TA</div>
-                        <div class="thread-info">
-                            <h4>📢 Actualización de Amy AI v3.5: Mayor velocidad en respuestas complejas</h4>
-                            <div class="thread-meta">
-                                <span>Por <strong>Equipo TEC AI</strong></span> • 
-                                <span>Ayer</span> • 
-                                <span class="badge" style="padding: 0.1rem 0.6rem; font-size: 0.75rem;">Novedades</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="thread-stats">
-                        <button class="vote-btn" id="vote-btn-4">
-                            ▲ <span class="vote-count">140</span>
-                        </button>
-                        <div class="stat-box">
-                            <span class="stat-num">52</span>
-                            <span>respuestas</span>
+                            <div class="thread-votes-pill">▲ <span class="vote-num">76</span></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Sidebar -->
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <!-- Create Thread Action -->
-                <div class="glass-card" style="text-align: center;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem;">¿Tienes una consulta?</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem;">Publica un nuevo tema para que la comunidad o Amy te brinden apoyo.</p>
-                    <button class="btn btn-primary trigger-login" style="width: 100%; font-size: 0.9rem;" id="btn-create-topic">+ Crear Nuevo Tema</button>
-                </div>
+            <!-- CUADRANTE 2 (Arriba Derecha): Comunidad Empresas -->
+            <div class="quadrant-card" id="cuadrante-empresas">
+                <div>
+                    <h3 class="quadrant-title">🏢 Comunidad Empresas</h3>
+                    <div class="companies-list-boceto">
+                        <!-- Empresa 1 -->
+                        <div class="company-item-boceto">
+                            <div class="company-avatar-box">HC</div>
+                            <div class="company-info">
+                                <h5>Hospital Central San Lucas</h5>
+                                <span>1.420 profesionales • Nodo Activo</span>
+                            </div>
+                        </div>
 
-                <!-- Community Stats -->
-                <div class="glass-card">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.6rem;">Estadísticas del Foro</h3>
-                    <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span style="color: var(--text-muted);">Miembros activos:</span>
-                            <strong style="color: var(--cyan);">4,280</strong>
+                        <!-- Empresa 2 -->
+                        <div class="company-item-boceto">
+                            <div class="company-avatar-box">CS</div>
+                            <div class="company-info">
+                                <h5>Clínica Médica San Martín</h5>
+                                <span>380 médicos • Triaje automatizado</span>
+                            </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <span style="color: var(--text-muted);">Temas debatidos:</span>
-                            <strong style="color: var(--purple);">1,150</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <span style="color: var(--text-muted);">Consultas resueltas:</span>
-                            <strong style="color: var(--emerald);">98.4%</strong>
+
+                        <!-- Empresa 3 -->
+                        <div class="company-item-boceto">
+                            <div class="company-avatar-box">RS</div>
+                            <div class="company-info">
+                                <h5>Red de Salud Metropolitana</h5>
+                                <span>12 centros conectados a Amy</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Botón de Boceto 6 -->
+                <button class="btn btn-primary btn-join-group" id="btn-unirse-grupo">Unirse al Grupo Empresarial</button>
             </div>
-        </div>
+
+            <!-- CUADRANTE 3 (Abajo Izquierda): Recursos Destacados -->
+            <div class="quadrant-card" id="cuadrante-recursos">
+                <div>
+                    <h3 class="quadrant-title">📚 Recursos Destacados</h3>
+                    <div class="resources-list-boceto">
+                        <!-- Recurso 1: Casos de éxito -->
+                        <a href="#modal-resource" class="resource-boceto-entry" data-title="Casos de Éxito con Amy">
+                            <div class="resource-icon-boceto">🏆</div>
+                            <div class="resource-entry-text">
+                                <h5>Casos de Éxito</h5>
+                                <p>Cero margen de error y -45% de tiempo en reservas médicas.</p>
+                            </div>
+                        </a>
+
+                        <!-- Recurso 2: Guía de cumplimiento -->
+                        <a href="#modal-resource" class="resource-boceto-entry" data-title="Guía de Cumplimiento Médico">
+                            <div class="resource-icon-boceto">📑</div>
+                            <div class="resource-entry-text">
+                                <h5>Guía de Cumplimiento</h5>
+                                <p>Estándares éticos, secreto médico, normas HIPAA y GDPR.</p>
+                            </div>
+                        </a>
+
+                        <!-- Recurso 3: Seguridad y escalabilidad -->
+                        <a href="#modal-resource" class="resource-boceto-entry" data-title="Seguridad y Escalabilidad">
+                            <div class="resource-icon-boceto">🛡️</div>
+                            <div class="resource-entry-text">
+                                <h5>Seguridad y Escalabilidad</h5>
+                                <p>Protección contra ciberataques y arquitectura de contingencia.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CUADRANTE 4 (Abajo Derecha): Mentores Destacados -->
+            <div class="quadrant-card" id="cuadrante-mentores">
+                <div>
+                    <h3 class="quadrant-title">⭐ Mentores Destacados</h3>
+                    <div class="mentors-list-boceto">
+                        <!-- Mentor 1: Doctora María -->
+                        <div class="mentor-card-boceto">
+                            <div class="mentor-avatar">👩‍⚕️</div>
+                            <div class="mentor-info">
+                                <h5>Doctora María</h5>
+                                <span>Especialista en IA Clínica y Bioética</span>
+                            </div>
+                        </div>
+
+                        <!-- Mentor 2: Ing. Pedro -->
+                        <div class="mentor-card-boceto">
+                            <div class="mentor-avatar">👨‍💻</div>
+                            <div class="mentor-info">
+                                <h5>Ing. Pedro</h5>
+                                <span>Arquitecto Cloud & Redes Neuronales</span>
+                            </div>
+                        </div>
+
+                        <!-- Mentor 3: Doc. Felipe -->
+                        <div class="mentor-card-boceto">
+                            <div class="mentor-avatar">👨‍⚕️</div>
+                            <div class="mentor-info">
+                                <h5>Doc. Felipe</h5>
+                                <span>Director de Innovación Hospitalaria</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <a href="ayuda.html" class="btn btn-outline btn-sm" style="width: 100%;">Solicitar Sesión de Mentoría</a>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Modal Nuevo Hilo -->
+    <div class="modal-overlay" id="new-thread-modal">
+        <div class="modal-box">
+            <button class="modal-close" id="close-thread-modal">&times;</button>
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Publicar en el <span class="gradient-text">Foro de Empresas</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Comparte un caso de uso, pregunta técnica o experiencia con Amy.</p>
+            <form id="new-thread-form">
+                <div class="form-group">
+                    <label for="thread-title-input">Título del Debate</label>
+                    <input type="text" id="thread-title-input" class="form-control" placeholder="Ej: Implementación de Amy en cuidados intensivos..." required>
+                </div>
+                <div class="form-group">
+                    <label for="thread-author-input">Tu Nombre / Institución</label>
+                    <input type="text" id="thread-author-input" class="form-control" placeholder="Ej: Dr. Gómez (Hospital San Juan)" required>
+                </div>
+                <div class="form-group">
+                    <label for="thread-content-input">Detalle de la consulta o aporte</label>
+                    <textarea id="thread-content-input" class="form-control" rows="4" placeholder="Describe tu propuesta o consulta para la comunidad..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Publicar Hilo</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Modal Login -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal-box">
             <button class="modal-close" id="close-login">&times;</button>
-            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC AI</span></h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Inicia sesión para publicar temas y votar en el foro.</p>
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">Amy AI</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Accede para votar hilos e interactuar con mentores.</p>
             <form id="login-form">
                 <div class="form-group">
                     <label for="login-email">Correo Electrónico</label>
-                    <input type="email" id="login-email" class="form-control" placeholder="tu@email.com" required>
+                    <input type="email" id="login-email" class="form-control" placeholder="tu@empresa.com" required>
                 </div>
                 <div class="form-group">
                     <label for="login-password">Contraseña</label>
                     <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btn-submit-login-foro">Ingresar</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ingresar</button>
             </form>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <div class="brand-logo" style="margin-bottom: 1rem;">
-                    <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">AI</div>
-                    <span>TEC AI</span>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.88rem;">Comunidad Oficial de Desarrolladores e Inteligencia Artificial.</p>
+        <div class="footer-inner">
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="amy.html">Amy AI</a></li>
+                <li><a href="foro.html">Foro</a></li>
+                <li><a href="ayuda.html">Centro de Ayuda</a></li>
+                <li><a href="empresas.html#planes">Planes</a></li>
+            </ul>
+            <div class="footer-copy">
+                Copyright © 2029 Amy AI Systems & TEC AI. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="foro.html">Foro de la Comunidad</a></li>
-                    <li><a href="ayuda.html">Centro de Ayudas</a></li>
-                    <li><a href="empresas.html">Para Empresas</a></li>
-                    <li><a href="amy.html">Amy AI Assistant</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Categorías</h4>
-                <ul>
-                    <li><a href="foro.html">Prompts & Amy</a></li>
-                    <li><a href="foro.html">Programación</a></li>
-                    <li><a href="foro.html">Casos de Empresas</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Soporte</h4>
-                <ul>
-                    <li><a href="ayuda.html">Centro de Ayuda</a></li>
-                    <li><a href="ayuda.html#contacto">Contactar equipo</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 TEC AI. Todos los derechos reservados.</p>
-            <p>Sección: Foro</p>
         </div>
     </footer>
 

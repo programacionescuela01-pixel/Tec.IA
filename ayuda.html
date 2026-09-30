@@ -1,162 +1,284 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Ayuda & Soporte | TEC AI</title>
-    <meta name="description" content="Centro de Ayuda de TEC AI y Amy. Encuentra respuestas rápidas, guías de usuario, preguntas frecuentes y asistencia técnica directa.">
+    <title>Centro de Ayuda de Amy | TEC AI</title>
+    <meta name="description"
+        content="Centro de Ayuda oficial de Amy AI y TEC AI. Guías clínicas, primeros pasos, gestión de pacientes, solución de problemas y soporte técnico.">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/ayuda.css">
 </head>
+
 <body>
     <!-- Navbar Header -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" id="nav-logo">
-                <div class="logo-badge">AI</div>
-                <span>TEC <span class="gradient-text">AI</span></span>
+            <a href="amy.html" class="brand-tab" id="nav-logo">
+                <div class="logo-badge-amy">A</div>
+                <span>Amy</span>
             </a>
+
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link" id="nav-home">Inicio</a></li>
-                <li><a href="foro.html" class="nav-link" id="nav-foro">Foro</a></li>
-                <li><a href="ayuda.html" class="nav-link active" id="nav-ayuda">Centro de Ayuda</a></li>
-                <li><a href="empresas.html" class="nav-link" id="nav-empresas">Para Empresas</a></li>
-                <li>
-                    <a href="amy.html" class="nav-link nav-link-amy" id="nav-amy">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        Amy AI
-                    </a>
-                </li>
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="amy.html" class="nav-link">Amy AI</a></li>
+                <li><a href="ayuda.html" class="nav-link active">Centro de Ayuda</a></li>
+                <li><a href="foro.html" class="nav-link">Foro</a></li>
+                <li><a href="empresas.html" class="nav-link">Para Empresas</a></li>
             </ul>
+
             <div class="nav-actions">
                 <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
-                <a href="amy.html" class="btn btn-primary btn-sm" id="btn-start-nav">Probar Amy</a>
+                <a href="amy.html#consola-amy" class="btn btn-primary btn-sm">Probar Amy</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Hero Search Section -->
-        <div style="text-align: center; margin-bottom: 2.5rem;">
-            <div class="badge">❓ Soporte Técnico & Guías</div>
-            <h1>Centro de <span class="cyan-text">Ayudas TEC AI</span></h1>
-            <p style="color: var(--text-muted); max-width: 650px; margin: 0.5rem auto 1.8rem;">¿Tienes alguna duda sobre Amy AI, tus planes o la configuración? Estamos aquí para guiarte.</p>
-            
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="search-input" class="search-input" placeholder="Escribe tu consulta (ej. 'planes', 'Base de datos', 'login', 'Amy')...">
-            </div>
-        </div>
+        <!-- Hero Search Section (Boceto 4 & 5) -->
+        <section class="help-hero-section">
+            <div class="badge">❓ Soporte Clínico & Documentación</div>
+            <h1>Centro de Ayuda de Amy</h1>
+            <p>Encuentra respuestas rápidas, guías médicas actualizadas y tutoriales paso a paso para maximizar el uso
+                de Amy.</p>
 
-        <!-- Help Categories Cards -->
-        <section style="margin-bottom: 3.5rem;">
-            <div class="grid-3">
-                <div class="glass-card" style="text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🚀</div>
-                    <h3>Primeros Pasos</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">Aprende a usar la plataforma TEC AI y cómo comunicarte de forma efectiva con Amy.</p>
+            <!-- Barra de Búsqueda de Boceto 4 & 5 -->
+            <div class="search-box-pill">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="help-search-input"
+                    placeholder="Busca ayuda, guías o respuestas (ej. 'pacientes', 'notas', 'BD')...">
+            </div>
+        </section>
+
+        <!-- 4 QUICK ACCESS CARDS (Boceto 5) -->
+        <section class="quick-access-grid">
+            <!-- Card 1 -->
+            <a href="#guias" class="quick-card">
+                <div class="quick-card-icon">📖</div>
+                <h3>Recursos y Guías</h3>
+                <p>Manuales clínicos, integración de API y protocolos médicos verificados.</p>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="#pacientes" class="quick-card">
+                <div class="quick-card-icon">👥</div>
+                <h3>Gestión de Pacientes</h3>
+                <p>Fichas digitales, búsqueda avanzada y seguimiento de signos vitales.</p>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="foro.html" class="quick-card">
+                <div class="quick-card-icon">🌐</div>
+                <h3>Comunidad de Usuarios</h3>
+                <p>Intercambio de experiencias entre médicos, clínicas y hospitales.</p>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="#faq" class="quick-card">
+                <div class="quick-card-icon">🎧</div>
+                <h3>Soporte y Contacto</h3>
+                <p>Asistencia técnica dedicada 24/7 y resolución de incidentes críticos.</p>
+            </a>
+        </section>
+
+        <!-- MAIN LAYOUT BOCETO 4: Categorías Populares (Izquierda) + Recursos Destacados (Derecha) -->
+        <section class="help-main-layout">
+
+            <!-- Columna Izquierda: Categorías Populares -->
+            <div class="popular-categories-card" id="categorias-populares">
+                <h3 class="section-title-boceto">📂 Categorías Populares</h3>
+
+                <div class="categories-tree-grid">
+                    <!-- Bloque 1: Primeros pasos -->
+                    <div class="category-block">
+                        <h4>🚀 Primeros Pasos</h4>
+                        <ul class="category-links-list">
+                            <li><a href="#faq" class="faq-link">¿Qué es Amy?</a></li>
+                            <li><a href="#faq" class="faq-link">Crear tu cuenta</a></li>
+                            <li><a href="#faq" class="faq-link">Guía de bienvenida</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloque 2: Funciones clínicas -->
+                    <div class="category-block" id="guias">
+                        <h4>🩺 Funciones Clínicas</h4>
+                        <ul class="category-links-list">
+                            <li><a href="#faq" class="faq-link">Funciones clínicas principales</a></li>
+                            <li><a href="#faq" class="faq-link">Guía de práctica clínica</a></li>
+                            <li><a href="#faq" class="faq-link">Validación de prescripciones</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloque 3: Gestión de pacientes -->
+                    <div class="category-block" id="pacientes">
+                        <h4>👥 Gestión de Pacientes</h4>
+                        <ul class="category-links-list">
+                            <li><a href="#faq" class="faq-link">Gestión de pacientes y triaje</a></li>
+                            <li><a href="#faq" class="faq-link">Búsqueda rápida por DNI/ID</a></li>
+                            <li><a href="#faq" class="faq-link">Historial telemétrico</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloque 4: Solución de problemas -->
+                    <div class="category-block">
+                        <h4>🛠️ Solución de Problemas</h4>
+                        <ul class="category-links-list">
+                            <li><a href="#faq" class="faq-link">Problemas frecuentes / bugs</a></li>
+                            <li><a href="#faq" class="faq-link">Recuperación de sesiones</a></li>
+                            <li><a href="#faq" class="faq-link">Protocolo de contingencia</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloque 5: Administración de cuentas -->
+                    <div class="category-block">
+                        <h4>⚙️ Administración de Cuentas</h4>
+                        <ul class="category-links-list">
+                            <li><a href="#faq" class="faq-link">Reportes de auditoría</a></li>
+                            <li><a href="#faq" class="faq-link">Alertas automáticas al médico</a></li>
+                            <li><a href="#faq" class="faq-link">Permisos y roles hospitalarios</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="glass-card" style="text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">💳</div>
-                    <h3>Planes & Facturación</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">Conoce la diferencia entre el Plan Simple, Pro y Para Empresas, métodos de pago y recibos.</p>
+            </div>
+
+            <!-- Columna Derecha: Recursos Destacados (Boceto 4) -->
+            <div class="featured-resources-column">
+                <h3 class="section-title-boceto">⭐ Recursos Destacados</h3>
+
+                <!-- Recurso 1 -->
+                <a href="amy.html#consola-amy" class="resource-card-boceto">
+                    <div class="resource-thumb">
+                        <img src="assets/img/clinical_dashboard.jpg" alt="Cómo integrar Amy">
+                    </div>
+                    <div class="resource-info">
+                        <h4>Cómo integrar Amy en tu clínica</h4>
+                        <span>Guía de Implementación →</span>
+                    </div>
+                </a>
+
+                <!-- Recurso 2 -->
+                <a href="#actualizaciones" class="resource-card-boceto">
+                    <div class="resource-thumb">
+                        <img src="assets/img/medical_guides.jpg" alt="Uso de guías médicas actualizadas">
+                    </div>
+                    <div class="resource-info">
+                        <h4>Uso de guías médicas actualizadas</h4>
+                        <span>Base de Conocimiento →</span>
+                    </div>
+                </a>
+
+                <!-- Recurso 3 -->
+                <a href="amy.html#feature-resumen" class="resource-card-boceto">
+                    <div class="resource-thumb">
+                        <img src="assets/img/amy_robot.jpg" alt="Optimización de notas clínicas">
+                    </div>
+                    <div class="resource-info">
+                        <h4>Optimización de notas clínicas</h4>
+                        <span>Tutorial Clínico →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PESTAÑAS BOCETO 4: Últimas Actualizaciones / Comunidad Amy -->
+        <section class="updates-section-boceto" id="actualizaciones">
+            <div class="tabs-header-boceto">
+                <button class="tab-btn-boceto active" id="tab-updates">Últimas Actualizaciones</button>
+                <button class="tab-btn-boceto" id="tab-community">Comunidad Amy</button>
+            </div>
+
+            <div class="updates-cards-grid">
+                <!-- Tarjeta 1: Resumen Clínico y Notas -->
+                <div class="update-subcard">
+                    <h4>📋 Resumen Clínico y Notas</h4>
+                    <ul class="update-tags-list">
+                        <li>Plantillas personalizadas por especialidad</li>
+                        <li>Autocompletado con terminología médica CIE-11</li>
+                        <li>Sincronización con Historias Clínicas Electrónicas</li>
+                    </ul>
                 </div>
-                <div class="glass-card" style="text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">⚙️</div>
-                    <h3>Integración BD & CD</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">Guías sobre la integración de Amy con Base de Datos (BD) y Contenido Dinámico (CD).</p>
+
+                <!-- Tarjeta 2: Guías y Evidencia Médica -->
+                <div class="update-subcard">
+                    <h4>📖 Guías y Evidencia Médica</h4>
+                    <ul class="update-tags-list">
+                        <li>Base de conocimiento con 150.000 estudios indexados</li>
+                        <li>Actualizaciones en tiempo real sobre farmacología</li>
+                        <li>Buscador semántico instantáneo</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 3: Análisis Predictivo de Pacientes -->
+                <div class="update-subcard">
+                    <h4>📈 Análisis Predictivo de Pacientes</h4>
+                    <ul class="update-tags-list">
+                        <li>Detección temprana de sepsis y arritmias</li>
+                        <li>Reportes estadísticos de evolución clínica</li>
+                        <li>Alertas automáticas en turnos y guardias</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Accordion FAQ Section -->
-        <section style="margin-bottom: 4rem;">
+        <!-- ACCORDION FAQ DINÁMICO -->
+        <section style="margin-top: 4rem;" id="faq">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2>Preguntas <span class="gradient-text">Frecuentes</span></h2>
-                <p style="color: var(--text-muted); margin-top: 0.4rem;">Respuestas directas a las consultas más comunes de nuestros usuarios.</p>
+                <h2>Preguntas Frecuentes</h2>
+                <p>Respuestas inmediatas a las consultas sobre el sistema Amy y TEC AI.</p>
             </div>
 
             <div class="accordion">
-                <!-- Item 1 -->
                 <div class="accordion-item active">
                     <div class="accordion-header">
-                        <span>¿Qué es Amy AI y qué tareas puede realizar?</span>
-                        <span class="accordion-icon">▼</span>
+                        <span>¿Qué es Amy y cómo funciona su asistente clínico?</span>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p>Amy es nuestra asistente de inteligencia artificial multifuncional. Puede responder preguntas generales, generar código de programación, consultar esquemas de Base de Datos (BD) y crear Contenido Dinámico (CD) para tus aplicaciones en tiempo real.</p>
+                        <p>Amy es una inteligencia artificial especializada en asistencia médica y hospitalaria. Puede
+                            redactar notas clínicas a partir del dictado, buscar evidencia médica actualizada,
+                            contrastar interacciones de medicamentos y consultar la base de datos de turnos e historias
+                            clínicas con máxima seguridad y rapidez.</p>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <span>¿Cómo funcionan los planes Simple, Pro y Para Empresas?</span>
-                        <span class="accordion-icon">▼</span>
+                        <span>¿Cómo crear una cuenta y acceder a los módulos?</span>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p>El <strong>Plan Simple</strong> es 100% gratuito para explorar a Amy. El <strong>Plan Pro</strong> incluye límites ampliados de mensajes y herramientas avanzadas para desarrolladores. El <strong>Plan Para Empresas</strong> ofrece infraestructura dedicada, alta seguridad de datos y soporte 24/7.</p>
+                        <p>Haz clic en el botón <strong>Iniciar Sesión</strong> o <strong>Empezar Gratis</strong> en la
+                            parte superior. Puedes utilizar el <strong>Plan Simple</strong> gratuito para profesionales
+                            o vincular tu credencial institucional hospitalaria para planes Pro o Empresa.</p>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <span>¿Qué significan los módulos BD y CD que usa Amy?</span>
-                        <span class="accordion-icon">▼</span>
+                        <span>¿Cómo conectar Amy con la Base de Datos (BD) del hospital?</span>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p><strong>BD (Base de Datos):</strong> Es el módulo de Amy encargado de estructurar y consultar bases de datos eficientemente.<br><strong>CD (Contenido Dinámico):</strong> Es la capacidad de Amy para generar o adaptar respuestas y contenidos web adaptados al contexto de cada usuario.</p>
+                        <p>Amy cuenta con APIs estándar HL7/FHIR y conectores seguros para bases de datos SQL y NoSQL.
+                            Toda la información se procesa bajo cifrado de extremo a extremo conforme a estándares HIPAA
+                            y GDPR.</p>
                     </div>
                 </div>
 
-                <!-- Item 4 -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <span>¿Cómo puedo solicitar una demo o contrato Para Empresas?</span>
-                        <span class="accordion-icon">▼</span>
+                        <span>¿Qué hacer en caso de interrupción del servicio o ciberataque?</span>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p>Puedes dirigirte a la sección <a href="empresas.html" style="color: var(--cyan); text-decoration: underline;">Para Empresas</a> y completar el formulario de contacto empresarial, o escribirnos directamente a nuestro equipo de ventas a través del formulario inferior.</p>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <span>¿Mis datos e historial con Amy son privados y seguros?</span>
-                        <span class="accordion-icon">▼</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Sí. Implementamos encriptación de nivel bancario (AES-256) y no vendemos ni utilizamos los datos de las empresas para entrenar modelos públicos sin su autorización explícita.</p>
+                        <p>El sistema cuenta con un modo de contingencia local diseñado por los fundadores de TEC AI,
+                            permitiendo mantener la consulta de historias críticas incluso en entornos sin conexión a
+                            internet externa.</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Direct Contact Form -->
-        <section id="contacto" class="glass-card" style="max-width: 750px; margin: 0 auto; text-align: center; border-color: rgba(6, 182, 212, 0.3);">
-            <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">¿No encontraste lo que buscabas?</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem;">Déjanos un mensaje y nuestro equipo de soporte se pondrá en contacto contigo a la brevedad.</p>
-            
-            <form onsubmit="event.preventDefault(); alert('¡Mensaje enviado correctamente! Te responderemos muy pronto.');">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;" class="form-row">
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="contact-name">Tu Nombre</label>
-                        <input type="text" id="contact-name" class="form-control" placeholder="Ej. Josué Aráoz" required>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="contact-email">Correo Electrónico</label>
-                        <input type="email" id="contact-email" class="form-control" placeholder="tu@email.com" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="contact-message">Mensaje o Consulta</label>
-                    <textarea id="contact-message" class="form-control" rows="4" placeholder="Describe brevemente cómo podemos ayudarte..." required style="resize: vertical;"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" id="btn-send-support" style="width: 100%;">Enviar Mensaje de Soporte</button>
-            </form>
         </section>
     </main>
 
@@ -164,8 +286,10 @@
     <div class="modal-overlay" id="login-modal">
         <div class="modal-box">
             <button class="modal-close" id="close-login">&times;</button>
-            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC AI</span></h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Accede a tu cuenta de soporte y consultas previas.</p>
+            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">Amy
+                    AI</span></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Accede a
+                tus recursos guardados y configuración de ayuda.</p>
             <form id="login-form">
                 <div class="form-group">
                     <label for="login-email">Correo Electrónico</label>
@@ -175,46 +299,29 @@
                     <label for="login-password">Contraseña</label>
                     <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btn-submit-login-ayuda">Ingresar</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ingresar</button>
             </form>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <div class="brand-logo" style="margin-bottom: 1rem;">
-                    <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">AI</div>
-                    <span>TEC AI</span>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.88rem;">Soporte continuo y guías para maximizar la tecnología AI.</p>
+        <div class="footer-inner">
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="amy.html">Amy AI</a></li>
+                <li><a href="foro.html">Foro de Empresas</a></li>
+                <li><a href="empresas.html#planes">Planes</a></li>
+                <li><a href="ayuda.html">Centro de Ayuda</a></li>
+            </ul>
+            <div class="footer-copy">
+                Copyright © 2029 Amy AI Systems & TEC AI. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="foro.html">Foro de la Comunidad</a></li>
-                    <li><a href="ayuda.html">Centro de Ayudas</a></li>
-                    <li><a href="empresas.html">Para Empresas</a></li>
-                    <li><a href="amy.html">Amy AI Assistant</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Soporte Rápido</h4>
-                <ul>
-                    <li><a href="#contacto">Formulario de Ayuda</a></li>
-                    <li><a href="foro.html">Preguntar en el Foro</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 TEC AI. Todos los derechos reservados.</p>
-            <p>Sección: Centro de Ayuda</p>
         </div>
     </footer>
 
     <script src="assets/js/shared.js"></script>
     <script src="assets/js/ayuda.js"></script>
 </body>
+
 </html>
