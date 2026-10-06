@@ -29,7 +29,7 @@
             </ul>
 
             <div class="nav-actions">
-                <button class="btn btn-secondary btn-sm trigger-login" id="btn-login-nav">Iniciar Sesión</button>
+                <a href="login.html" class="btn btn-secondary btn-sm" id="btn-login-nav">Iniciar Sesión</a>
                 <a href="amy.html" class="btn btn-primary btn-sm">Conocer a Amy</a>
             </div>
         </div>
@@ -121,41 +121,171 @@
         </section>
     </main>
 
-    <!-- Modal Login (Conectado a BD) -->
+    <!-- Modal Elección de Planes y Métodos de Pago (NUEVO) -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal-box">
             <button class="modal-close" id="close-login">&times;</button>
-            <h2 style="margin-bottom: 0.5rem; text-align: center;">Iniciar Sesión en <span class="gradient-text">TEC
-                    AI</span></h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">
-                Autenticación segura vinculada a la Base de Datos central.</p>
-            <form id="login-form">
+            <div style="text-align: center; margin-bottom: 1.2rem;">
+                <div class="badge">💎 Suscripción & Planes TEC AI</div>
+                <h2 style="font-size: 1.5rem; margin-top: 0.3rem;">Elección de Plan y Pago</h2>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">Selecciona tu plan, ingresa tus datos institucionales y elige un método de pago.</p>
+            </div>
+
+            <form id="planes-checkout-form">
+                <!-- 1. Selector Visual de Plan -->
                 <div class="form-group">
-                    <label for="login-email">Correo Electrónico</label>
-                    <input type="email" id="login-email" class="form-control" placeholder="tu@email.com" required>
+                    <label>1. Selecciona tu Plan</label>
+                    <input type="hidden" id="checkout-selected-plan" value="pro">
+                    <div class="plan-picker-grid">
+                        <div class="plan-picker-card" data-plan="simple">
+                            <div class="plan-picker-title">Plan Simple</div>
+                            <div class="plan-picker-price">$0/mes</div>
+                        </div>
+                        <div class="plan-picker-card selected" data-plan="pro">
+                            <div class="plan-picker-title">Plan Pro ⭐</div>
+                            <div class="plan-picker-price">$29/mes</div>
+                        </div>
+                        <div class="plan-picker-card" data-plan="empresa">
+                            <div class="plan-picker-title">Empresa</div>
+                            <div class="plan-picker-price">Personalizado</div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- 2. Información Requerida (Domicilio, Hospital/Empresa, etc) -->
                 <div class="form-group">
-                    <label for="login-password">Contraseña</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                    <label for="checkout-name">Nombre Completo del Responsable</label>
+                    <input type="text" id="checkout-name" class="form-control" placeholder="Dr. Carlos Mendoza" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ingresar al
-                    Sistema</button>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="checkout-org">Hospital / Empresa / Clínica</label>
+                        <input type="text" id="checkout-org" class="form-control" placeholder="Hospital Italiano" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-email">Correo Electrónico</label>
+                        <input type="email" id="checkout-email" class="form-control" placeholder="cmendoza@hospital.org" required>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="checkout-address">Domicilio / Dirección Fiscal</label>
+                        <input type="text" id="checkout-address" class="form-control" placeholder="Av. Corrientes 1234, CABA" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-phone">Teléfono de Contacto</label>
+                        <input type="tel" id="checkout-phone" class="form-control" placeholder="+54 11 4567-8900" required>
+                    </div>
+                </div>
+
+                <!-- 3. Selección de Método de Pago -->
+                <div class="form-group">
+                    <label>3. Método de Pago</label>
+                    <input type="hidden" id="checkout-selected-payment" value="card">
+                    <div class="payment-methods-grid">
+                        <button type="button" class="payment-method-btn active" data-method="card">💳 Tarjeta</button>
+                        <button type="button" class="payment-method-btn" data-method="bank">🏦 Transferencia</button>
+                        <button type="button" class="payment-method-btn" data-method="invoice">⚡ MercadoPago/Factura</button>
+                    </div>
+
+                    <!-- Campos dinámicos según método de pago -->
+                    <div class="payment-details-box">
+                        <div class="payment-detail-group" data-method="card" style="display: block;">
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem;">Número de Tarjeta de Crédito/Débito</label>
+                                <input type="text" class="form-control" placeholder="4532 •••• •••• 8890" maxlength="19">
+                            </div>
+                            <div class="form-row-2">
+                                <div>
+                                    <label style="font-size: 0.8rem;">Vencimiento</label>
+                                    <input type="text" class="form-control" placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.8rem;">CVC / CVV</label>
+                                    <input type="password" class="form-control" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-detail-group" data-method="bank" style="display: none;">
+                            <p style="font-size: 0.83rem; color: var(--text-body); margin-bottom: 0.4rem;"><strong>Datos Bancarios para Transferencia Directa:</strong></p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); font-family: monospace;">
+                                CBU: 0170044520000034189012<br>
+                                Alias: AMY.AI.TECNOLOGIA<br>
+                                Banco: Santander Río - TEC AI S.A.
+                            </p>
+                        </div>
+
+                        <div class="payment-detail-group" data-method="invoice" style="display: none;">
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem;">CUIT / RUT de la Empresa / Hospital</label>
+                                <input type="text" class="form-control" placeholder="30-71234567-8">
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Se emitirá Factura A/B automática con cobro recurrente institucional o link de Mercado Pago.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; padding: 12px;">Confirmar Suscripción y Activar Plan</button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-inner">
-            <ul class="footer-nav">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="amy.html">Amy AI</a></li>
-                <li><a href="foro.html">Foro de Empresas</a></li>
-                <li><a href="ayuda.html">Centro de Ayuda</a></li>
-                <li><a href="empresas.html#planes">Planes</a></li>
-            </ul>
-            <div class="footer-copy">
-                Copyright © 2029 Amy AI Systems & TEC AI. All rights reserved.
+    <!-- Footer Completo -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top-grid">
+                <div class="footer-brand-col">
+                    <a href="index.html" class="brand-tab" style="display: inline-flex; text-decoration: none;">
+                        <div class="logo-badge-amy">A</div>
+                        <span style="font-weight: 700; color: var(--text-navy); font-size: 1.2rem; margin-left: 8px;">Amy AI</span>
+                    </a>
+                    <p>Asistente clínico inteligente y ecosistema TEC AI. Soluciones avanzadas de inteligencia artificial orientadas a la medicina, salud hospitalaria y optimización de flujos profesionales.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Navegación</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="amy.html">Amy AI</a></li>
+                        <li><a href="empresas.html">Empresas & Soluciones</a></li>
+                        <li><a href="empresas.html#planes">Planes y Precios</a></li>
+                        <li><a href="foro.html">Foro de la Comunidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Recursos</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="ayuda.html">Centro de Ayuda</a></li>
+                        <li><a href="ayuda.html#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="foro.html#cuadrante-hilos">Casos de Éxito</a></li>
+                        <li><a href="login.html">Sign in to Amy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Legal & Seguridad</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="amy.html">Privacidad de Datos</a></li>
+                        <li><a href="amy.html">Términos de Servicio</a></li>
+                        <li><a href="empresas.html">Cumplimiento HIPAA / GDPR</a></li>
+                        <li><a href="ayuda.html">Seguridad Hospitalaria</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div>
+                    Copyright © 2029 <strong>Amy AI Systems & TEC AI</strong>. Todos los derechos reservados.
+                </div>
+                <ul class="footer-bottom-links">
+                    <li><a href="amy.html">Privacidad</a></li>
+                    <li><a href="amy.html">Términos</a></li>
+                    <li><a href="ayuda.html">Contacto</a></li>
+                </ul>
             </div>
         </div>
     </footer>

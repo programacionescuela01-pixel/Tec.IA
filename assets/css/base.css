@@ -489,6 +489,9 @@ a {
 /* --------------------------------------------------
    MAIN & FOOTER (Fiel a Boceto 1)
    -------------------------------------------------- */
+/* --------------------------------------------------
+   MAIN & FOOTER COMPLETO CON COPYRIGHT Y ENLACES
+   -------------------------------------------------- */
 .main-content {
     flex: 1;
     max-width: 1200px;
@@ -497,43 +500,95 @@ a {
     width: 100%;
 }
 
-footer {
+footer.site-footer {
     background: #ffffff;
     border-top: 1px solid rgba(226, 232, 240, 0.9);
-    padding: 2.5rem 1.5rem;
+    padding: 3.5rem 1.5rem 2rem;
     margin-top: auto;
     color: var(--text-muted);
 }
 
-.footer-inner {
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.footer-top-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-brand-col p {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-navy);
+    margin-bottom: 1rem;
+}
+
+.footer-links-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-    text-align: center;
+    gap: 0.6rem;
 }
 
-.footer-nav {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    font-size: 0.95rem;
-    font-weight: 500;
+.footer-links-list a {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    transition: color 0.2s ease;
 }
 
-.footer-nav a:hover {
+.footer-links-list a:hover {
     color: var(--teal-dark);
 }
 
-.footer-copy {
+.footer-bottom-bar {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: var(--text-muted);
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--teal-dark);
+}
+
+@media (max-width: 768px) {
+    .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-top-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --------------------------------------------------
-   MODAL LOGIN (Compartido)
+   MODAL DE PLANES Y MÉTODOS DE PAGO (NUEVO)
    -------------------------------------------------- */
 .modal-overlay {
     position: fixed;
@@ -541,7 +596,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(15, 23, 42, 0.65);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     display: flex;
@@ -551,9 +606,11 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    padding: 1.5rem;
+    overflow-y: auto;
 }
 
-.modal-overlay.active {
+.modal-overlay.active, .modal-overlay.open {
     opacity: 1;
     visibility: visible;
 }
@@ -563,15 +620,17 @@ footer {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     padding: 2.5rem;
-    max-width: 440px;
-    width: 90%;
+    max-width: 580px;
+    width: 100%;
     position: relative;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
-    transform: scale(0.9);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+    transform: scale(0.92);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-.modal-overlay.active .modal-box {
+.modal-overlay.active .modal-box, .modal-overlay.open .modal-box {
     transform: scale(1);
 }
 
@@ -598,7 +657,7 @@ footer {
 }
 
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
 }
 
 .form-group label {
@@ -625,6 +684,94 @@ footer {
     box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
 }
 
+/* Selector de Planes en Formulario */
+.plan-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.plan-picker-card {
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #f8fafc;
+}
+
+.plan-picker-card:hover {
+    border-color: var(--teal-light);
+    background: var(--teal-bg);
+}
+
+.plan-picker-card.selected {
+    border-color: var(--teal-primary);
+    background: var(--teal-bg);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.18);
+}
+
+.plan-picker-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-navy);
+}
+
+.plan-picker-price {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--teal-dark);
+    margin-top: 2px;
+}
+
+/* Métodos de Pago Selector */
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.payment-method-btn {
+    border: 1.5px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    padding: 8px 4px;
+    background: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-body);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.payment-method-btn:hover {
+    border-color: var(--teal-primary);
+    color: var(--teal-dark);
+}
+
+.payment-method-btn.active {
+    border-color: var(--teal-primary);
+    background: var(--teal-bg);
+    color: var(--teal-dark);
+}
+
+.payment-details-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
@@ -633,4 +780,11 @@ footer {
     .brand-tab {
         margin-left: -0.5rem;
     }
+    .plan-picker-grid, .payment-methods-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row-2 {
+        grid-template-columns: 1fr;
+    }
 }
+
