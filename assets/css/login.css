@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LOGIN.CSS — Página Dedicada de Login (Amy AI)
+   LOGIN.CSS — Página Dedicada de Acceso & Registro (Amy AI)
    Paleta Teal / Menta Clínico — Integrada y Consistente con TEC AI
    ========================================================================== */
 
@@ -13,14 +13,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
     font-family: var(--font-body);
     color: var(--text-navy);
 }
 
 .login-wrapper {
     width: 100%;
-    max-width: 340px;
+    max-width: 410px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,23 +29,23 @@
 /* Brand Header */
 .login-header {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
 }
 
 .login-brand-logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     background: linear-gradient(135deg, var(--teal-primary) 0%, var(--teal-dark) 100%);
     border-radius: 50%;
     color: #ffffff;
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     box-shadow: 0 4px 14px var(--teal-glow);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -58,24 +58,84 @@
 .login-title {
     font-family: var(--font-heading);
     font-size: 1.65rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-navy);
     letter-spacing: -0.01em;
 }
 
-/* Main Login Form Box */
+.login-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+/* Tabs de navegación: Iniciar Sesión / Crear Cuenta */
+.auth-tabs {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: var(--radius-sm);
+    padding: 4px;
+    margin-bottom: 1.3rem;
+    border: 1px solid #e2e8f0;
+    gap: 4px;
+    width: 100%;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 9px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.auth-tab.active {
+    background: #ffffff;
+    color: var(--teal-deep);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.auth-tab:hover:not(.active) {
+    color: var(--text-navy);
+}
+
+/* Badge informativo de registro gratuito */
+.register-info-badge {
+    background: var(--teal-bg);
+    border: 1px solid var(--border-teal);
+    color: var(--teal-deep);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Main Auth Card */
 .login-card {
     width: 100%;
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    padding: 1.4rem;
+    padding: 1.6rem;
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
     margin-bottom: 1rem;
 }
 
 .login-form-group {
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.15rem;
 }
 
 .login-label-row {
@@ -90,6 +150,21 @@
     font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-navy);
+    margin-bottom: 0.35rem;
+}
+
+.required-star {
+    color: var(--teal-primary);
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+.login-input-hint {
+    display: block;
+    font-size: 0.77rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+    line-height: 1.35;
 }
 
 .login-forgot-link {
@@ -106,7 +181,7 @@
 
 .login-input {
     width: 100%;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: 1.5px solid #cbd5e1;
     border-radius: var(--radius-sm);
     font-family: var(--font-body);
@@ -122,60 +197,40 @@
     box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
 }
 
-/* Botón principal — Teal Clínico (igual que .btn.btn-primary del sitio) */
+/* Botón principal */
+.btn-green-submit,
 .btn-submit {
     width: 100%;
-    padding: 9px 16px;
+    padding: 11px 16px;
     background: linear-gradient(135deg, var(--teal-primary) 0%, var(--teal-dark) 100%);
     color: #ffffff;
     border: none;
     border-radius: var(--radius-sm);
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: 0.96rem;
     font-weight: 600;
     cursor: pointer;
-    transition: box-shadow 0.2s ease, transform 0.1s ease;
-    margin-top: 0.4rem;
+    transition: box-shadow 0.2s ease, transform 0.1s ease, filter 0.15s ease;
+    margin-top: 0.5rem;
     box-shadow: 0 3px 10px var(--teal-glow);
-    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
+.btn-green-submit:hover,
 .btn-submit:hover {
     box-shadow: 0 6px 20px var(--teal-glow);
     filter: brightness(1.05);
 }
 
+.btn-green-submit:active,
 .btn-submit:active {
     transform: scale(0.99);
 }
 
-/* Alias de compatibilidad */
-.btn-green-submit {
-    width: 100%;
-    padding: 9px 16px;
-    background: linear-gradient(135deg, var(--teal-primary) 0%, var(--teal-dark) 100%);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: box-shadow 0.2s ease, transform 0.1s ease;
-    margin-top: 0.4rem;
-    box-shadow: 0 3px 10px var(--teal-glow);
-}
-
-.btn-green-submit:hover {
-    box-shadow: 0 6px 20px var(--teal-glow);
-    filter: brightness(1.05);
-}
-
-.btn-green-submit:active {
-    transform: scale(0.99);
-}
-
-/* Callout Box (New to Amy?) */
+/* Callout Box inferior */
 .login-callout {
     width: 100%;
     background: var(--bg-surface);
@@ -188,29 +243,35 @@
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
 }
 
-.login-callout a {
+.login-toggle-link {
+    background: none;
+    border: none;
     color: var(--teal-dark);
+    font-family: inherit;
+    font-size: inherit;
     font-weight: 600;
-    text-decoration: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    transition: color 0.15s ease;
 }
 
-.login-callout a:hover {
-    text-decoration: underline;
+.login-toggle-link:hover {
     color: var(--teal-deep);
 }
 
 /* Footer Links */
 .login-footer {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     text-align: center;
 }
 
 .login-footer-links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
     list-style: none;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     flex-wrap: wrap;
 }
 
@@ -227,12 +288,13 @@
 /* Alert Message */
 .login-alert {
     display: none;
-    padding: 10px 14px;
+    padding: 11px 14px;
     border-radius: var(--radius-sm);
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     margin-bottom: 1rem;
     width: 100%;
     text-align: center;
+    line-height: 1.45;
 }
 
 .login-alert.success {
@@ -256,11 +318,11 @@
     color: #1e40af;
 }
 
-/* ─── Botones de acceso Social ──────────────────────────────────────────── */
+/* Botones de acceso Social */
 .social-login-stack {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.65rem;
     margin-bottom: 1.2rem;
 }
 
@@ -341,12 +403,27 @@
     color: var(--teal-dark);
 }
 
-/* ─── Divisor ────────────────────────────────────────────────────────────── */
+/* Badge de cuenta social conectada */
+.social-connected-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal-bg);
+    border: 1px solid var(--border-teal);
+    color: var(--teal-deep);
+    font-size: 0.83rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    margin: 0.5rem 0 1.2rem;
+}
+
+/* Divisor */
 .login-divider {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.15rem;
     color: var(--text-muted);
     font-size: 0.82rem;
 }
@@ -359,20 +436,11 @@
     background: var(--border-subtle);
 }
 
-/* ─── Pasos / Steps ─────────────────────────────────────────────────────── */
+/* Pasos / Steps */
+.auth-step,
 .login-step {
     width: 100%;
     animation: fadeSlideIn 0.25s ease;
-}
-
-.login-card {
-    width: 100%;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    padding: 1.4rem;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
-    margin-bottom: 1rem;
 }
 
 @keyframes fadeSlideIn {
@@ -380,7 +448,6 @@
         opacity: 0;
         transform: translateY(8px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -392,17 +459,19 @@
     border: none;
     color: var(--teal-dark);
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     padding: 0;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.3rem;
+    transition: color 0.15s ease;
 }
 
 .login-back-btn:hover {
     text-decoration: underline;
+    color: var(--teal-deep);
 }
 
 .login-step-title {
@@ -418,14 +487,14 @@
     line-height: 1.5;
 }
 
-/* ─── Input de Teléfono ──────────────────────────────────────────────────── */
+/* Input de Teléfono */
 .phone-input-row {
     display: flex;
     gap: 0.5rem;
 }
 
 .phone-prefix-select {
-    padding: 8px 6px;
+    padding: 9px 8px;
     border: 1.5px solid #cbd5e1;
     border-radius: var(--radius-sm);
     font-family: var(--font-body);
@@ -443,7 +512,7 @@
     box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
 }
 
-/* ─── Inputs OTP ─────────────────────────────────────────────────────────── */
+/* Inputs OTP */
 .otp-input-row {
     display: flex;
     justify-content: center;
@@ -479,16 +548,13 @@
 }
 
 @keyframes shake {
-
     0%,
     100% {
         transform: translateX(0);
     }
-
     25% {
         transform: translateX(-5px);
     }
-
     75% {
         transform: translateX(5px);
     }

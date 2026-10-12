@@ -31,6 +31,11 @@
             <div class="nav-actions">
                 <a href="login.html" class="btn btn-secondary btn-sm" id="btn-login-nav">Iniciar Sesión</a>
                 <a href="#planes" class="btn btn-primary btn-sm">Ver Planes</a>
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-drawer">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -59,22 +64,7 @@
             </div>
 
             <div class="pricing-grid">
-                <!-- PLAN 1: SIMPLE (Boceto 2 & 3) -->
-                <div class="pricing-card" id="plan-simple">
-                    <div class="plan-name">Plan Simple</div>
-                    <div class="plan-desc">Para médicos individuales, estudiantes y pequeñas consultas.</div>
-                    <div class="price">$0 <span>/ mes</span></div>
-                    <ul class="feature-list">
-                        <li>Acceso al Asistente Clínico Amy</li>
-                        <li>Hasta 150 resúmenes clínicos por mes</li>
-                        <li>Consulta de guías médicas básicas</li>
-                        <li>Acceso al Foro de la Comunidad</li>
-                        <li>Soporte por Centro de Ayuda</li>
-                    </ul>
-                    <button class="btn btn-secondary trigger-plan-checkout" style="width: 100%;">Comenzar Gratis</button>
-                </div>
-
-                <!-- PLAN 2: PRO (Boceto 2 & 3) -->
+                <!-- PLAN 1: PRO (Boceto 2 & 3) -->
                 <div class="pricing-card popular" id="plan-pro">
                     <span class="popular-badge">Recomendado</span>
                     <div class="plan-name">Plan Pro</div>
@@ -159,7 +149,6 @@
                         <select id="contact-plan" class="form-control" style="background: white;">
                             <option value="empresa">Plan Para Empresa (Hospitales y Clínicas)</option>
                             <option value="pro">Plan Pro (Consultorios)</option>
-                            <option value="simple">Plan Simple (Individual)</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;"
@@ -185,10 +174,6 @@
                     <label>1. Selecciona tu Plan</label>
                     <input type="hidden" id="checkout-selected-plan" value="pro">
                     <div class="plan-picker-grid">
-                        <div class="plan-picker-card" data-plan="simple">
-                            <div class="plan-picker-title">Plan Simple</div>
-                            <div class="plan-picker-price">$0/mes</div>
-                        </div>
                         <div class="plan-picker-card selected" data-plan="pro">
                             <div class="plan-picker-title">Plan Pro ⭐</div>
                             <div class="plan-picker-price">$29/mes</div>

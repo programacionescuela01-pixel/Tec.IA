@@ -209,21 +209,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const lower = input.toLowerCase();
         let reply = "";
 
-        if (lower.includes('hola') || lower.includes('buenas')) {
-            reply = `¡Hola! Soy **Amy**, tu asistente de Inteligencia Artificial en TEC AI. ¿En qué te puedo colaborar hoy?`;
+        if (lower.includes('caso de una enfermedad') || lower.includes('enfermedad') || lower.includes('enfermo') || lower.includes('que hago si')) {
+            reply = `❤️ <strong>Comprendo lo difícil y preocupante que es sentirse enfermo.</strong> No estás solo/a en esto. 
+            <br><br><strong>Pautas clínicas clave:</strong>
+            <br>1. <strong>Reposo:</strong> Dale a tu cuerpo el descanso necesario para recuperarse.
+            <br>2. <strong>Hidratación:</strong> Bebe abundante agua o caldos tibios en pequeños sorbos.
+            <br>3. <strong>Registro de síntomas:</strong> Mide y anota tu temperatura y cuándo empezaron los malestares.
+            <br>4. <strong>Automedicación:</strong> Evita tomar medicamentos complejos o antibióticos sin indicación médica.
+            <br><br>🚨 <em>Acude a urgencias si presentas dificultad para respirar, dolor de pecho o fiebre mayor a 39°C que no baja.</em>
+            <br><br>¿Qué síntomas específicos estás sintiendo en este momento? Cuéntame y te acompaño.`;
+        } else if (lower.includes('pastilla') || lower.includes('pastillas') || lower.includes('medicamento') || lower.includes('tomar') || lower.includes('remedio')) {
+            reply = `💊 <strong>Sé que cuando hay dolor o malestar, lo que uno más desea es alivio rápido.</strong> 
+            <br><br>• <strong>Para dolor o fiebre leve:</strong> El <strong>Paracetamol</strong> (500mg-1g en adultos) suele ser la opción más segura y gentil con el estómago.
+            <br>• <strong>Para inflamación:</strong> El <strong>Ibuprofeno</strong> (400mg) desinflama, pero tómalo siempre con alimentos y evítalo si tienes gastritis o úlceras.
+            <br>• ⚠️ <strong>¡Nunca tomes antibióticos por tu cuenta!</strong> No curan virus y pueden perjudicar tu salud.
+            <br><br>¿Para qué dolor o molestia necesitas alivio? Cuéntame para orientarte mejor.`;
+        } else if (lower.includes('hola') || lower.includes('buenas')) {
+            reply = `¡Hola con mucho cariño! Soy **Amy**, tu asistente de salud e Inteligencia Artificial en TEC AI. ¿Cómo te encuentras hoy? ¿En qué puedo colaborar contigo?`;
+        } else if (lower.includes('gracias')) {
+            reply = `💖 ¡No tienes nada que agradecer! Cuidar de ti y acompañarte es una alegría enorme. Cuídate mucho y descansa. Si necesitas algo más, aquí estaré.`;
         } else if (lower.includes('planes') || lower.includes('precio') || lower.includes('costo')) {
             reply = `Contamos con 3 planes ajustados a tus necesidades: 
             <br>• **Plan Simple**: Ideal para proyectos personales ($0 / mes)
-            <br>• **Plan Pro**: Para desarrolladores avanzados ($19 / mes)
+            <br>• **Plan Pro**: Para desarrolladores y consultorios ($29 / mes)
             <br>• **Plan Para Empresas**: Solución corporativa completa con soporte 24/7 y modelos adaptados. Puedes consultarlos en nuestra sección [Para Empresas](empresas.html).`;
         } else if (lower.includes('bd') || lower.includes('base de datos')) {
-            reply = `En el modo **Base de Datos (BD)** puedo ayudarte a realizar consultas SQL, estructurar modelos relacionales o integrar bases de datos no relacionales con alta eficiencia.`;
+            reply = `En el modo **Base de Datos (BD)** puedo ayudarte a realizar consultas SQL, estructurar modelos relacionales o integrar bases de datos hospitalarias con alta eficiencia y seguridad.`;
         } else if (lower.includes('cd') || lower.includes('contenido')) {
-            reply = `El módulo de **Contenido Dinámico (CD)** te permite generar artículos, resúmenes, respuestas en tiempo real y personalizaciones de experiencia de usuario al instante.`;
-        } else if (lower.includes('empresa') || lower.includes('empresas')) {
-            reply = `Para negocios y organizaciones ofrecemos cifrado de extremo a extremo, SLA de 99.9% y despliegue dedicado. Revisa más en la pestaña **Para Empresas**.`;
+            reply = `El módulo de **Contenido Dinámico (CD)** te permite generar artículos, resúmenes clínicos, respuestas en tiempo real y reportes interoperables al instante.`;
         } else {
-            reply = `He procesado tu consulta sobre "${escapeHTML(input)}" en modo **${mode}**. Como asistente de TEC AI, estoy lista para ayudarte a implementar código, optimizar flujos o resolver dudas en nuestro [Centro de Ayuda](ayuda.html) o [Foro](foro.html).`;
+            reply = `He recibido con total atención tu consulta sobre "${escapeHTML(input)}" en modo **${mode}**. Como asistente de TEC AI, estoy a tu lado para ayudarte ante cualquier consulta de salud, triaje o soporte del sistema. ¿En qué más te gustaría profundizar?`;
         }
 
         appendAmyMessage(reply);

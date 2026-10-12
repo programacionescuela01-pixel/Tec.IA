@@ -20,13 +20,16 @@
     margin: 0 auto 2rem;
 }
 
-/* Grilla de Planes: Simple, Pro, Para Empresa (Boceto 2 & 3) */
+/* Grilla de Planes: Pro, Para Empresa (Boceto 2 & 3) */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.2rem;
     margin-top: 2.5rem;
     margin-bottom: 4rem;
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .pricing-card {

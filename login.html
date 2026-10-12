@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in to Amy | TEC AI</title>
-    <meta name="description" content="Inicia sesión en Amy AI, tu asistente clínico inteligente especializado. Accede a tu panel hospitalario o corporativo.">
+    <title>Acceso y Registro | Amy AI - TEC AI</title>
+    <meta name="description"
+        content="Inicia sesión o crea tu cuenta gratuita en Amy AI. Tu asistente clínico inteligente con IA, sin necesidad de métodos de pago.">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Apple Sign In -->
-    <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
+    <script type="text/javascript"
+        src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
 </head>
 
 <body class="login-body">
@@ -19,132 +21,397 @@
     <div class="login-wrapper">
 
         <!-- Logo Header -->
-        <div class="login-header">
-            <a href="index.html" title="Volver al Inicio" class="login-brand-logo">A</a>
-            <h1 class="login-title">Sign in to Amy</h1>
-        </div>
+        <header class="login-header">
+            <a href="index.html" title="Volver al Inicio" class="login-brand-logo"
+                aria-label="Ir al inicio de TEC AI">A</a>
+            <h1 class="login-title" id="auth-main-title">Iniciar sesión en Amy</h1>
+            <p class="login-subtitle" id="auth-sub-title">Accede a tu asistente clínico con IA</p>
+        </header>
 
-        <!-- Feedback Alert -->
-        <div class="login-alert" id="login-alert-box"></div>
+        <!-- Feedback Alert Box -->
+        <div class="login-alert" id="login-alert-box" role="alert" aria-live="polite"></div>
 
-        <!-- ========== PASO 1: Opciones de inicio ========== -->
-        <div id="step-options" class="login-step active">
+        <!-- Tarjeta Principal de Autenticación -->
+        <div class="login-card">
 
-            <!-- Botones de Acceso Social y Teléfono -->
-            <div class="social-login-stack">
 
-                <!-- Google -->
-                <button type="button" class="social-btn social-btn-google" id="btn-google" onclick="loginWithGoogle()">
-                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
-                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
-                    Continuar con Google
-                </button>
 
-                <!-- Apple -->
-                <button type="button" class="social-btn social-btn-apple" id="btn-apple" onclick="loginWithApple()">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M16.462 1.233c.074.868-.248 1.735-.716 2.394-.48.67-1.272 1.232-2.054 1.165-.093-.839.28-1.696.73-2.32.48-.665 1.305-1.195 2.04-1.24zm3.25 17.35c-.37.85-.55 1.23-1.03 1.98-.67 1.07-1.61 2.39-2.77 2.4-1.04.01-1.3-.67-2.71-.66-1.41.01-1.7.67-2.74.66-1.16-.01-2.05-1.22-2.72-2.29-1.86-2.97-2.06-6.45-.91-8.3.82-1.35 2.1-2.14 3.32-2.14 1.24 0 2.02.66 3.04.66 1 0 1.6-.66 3.04-.66 1.08 0 2.24.59 3.06 1.8-2.69 1.47-2.25 5.31.4 6.55z"/>
-                    </svg>
-                    Continuar con Apple
-                </button>
+            <!-- ============================================================= -->
+            <!-- PANEL 1: INICIAR SESIÓN                                      -->
+            <!-- ============================================================= -->
+            <div id="panel-login" role="tabpanel" aria-labelledby="tab-login">
 
-                <!-- Teléfono -->
-                <button type="button" class="social-btn social-btn-phone" id="btn-phone" onclick="showPhoneStep()">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
-                    </svg>
-                    Continuar con número de teléfono
-                </button>
+                <!-- Vista 1.1: Opciones de inicio de sesión -->
+                <div id="step-login-options" class="auth-step">
+                    <div class="social-login-stack">
+                        <!-- Google -->
+                        <button type="button" class="social-btn social-btn-google" id="btn-login-google"
+                            onclick="loginWithGoogle()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="#4285F4"
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                <path fill="#34A853"
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                <path fill="#FBBC05"
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                                <path fill="#EA4335"
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                            </svg>
+                            Continuar con Google
+                        </button>
+
+                        <!-- Apple -->
+                        <button type="button" class="social-btn social-btn-apple" id="btn-login-apple"
+                            onclick="loginWithApple()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M16.462 1.233c.074.868-.248 1.735-.716 2.394-.48.67-1.272 1.232-2.054 1.165-.093-.839.28-1.696.73-2.32.48-.665 1.305-1.195 2.04-1.24zm3.25 17.35c-.37.85-.55 1.23-1.03 1.98-.67 1.07-1.61 2.39-2.77 2.4-1.04.01-1.3-.67-2.71-.66-1.41.01-1.7.67-2.74.66-1.16-.01-2.05-1.22-2.72-2.29-1.86-2.97-2.06-6.45-.91-8.3.82-1.35 2.1-2.14 3.32-2.14 1.24 0 2.02.66 3.04.66 1 0 1.6-.66 3.04-.66 1.08 0 2.24.59 3.06 1.8-2.69 1.47-2.25 5.31.4 6.55z" />
+                            </svg>
+                            Continuar con Apple
+                        </button>
+
+                        <!-- Teléfono -->
+                        <button type="button" class="social-btn social-btn-phone" id="btn-login-phone"
+                            onclick="showLoginPhoneStep()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z" />
+                            </svg>
+                            Continuar con número de teléfono
+                        </button>
+                    </div>
+
+                    <!-- Divisor -->
+                    <div class="login-divider">
+                        <span>o ingresá con email</span>
+                    </div>
+
+                    <!-- Formulario Email + Password -->
+                    <form id="standalone-login-form" onsubmit="submitLoginForm(event)">
+                        <div class="login-form-group">
+                            <label for="username_or_email" class="login-label">Correo o nombre de usuario</label>
+                            <input type="text" id="username_or_email" name="login" class="login-input"
+                                placeholder="ejemplo@hospital.org" autocomplete="username" required>
+                        </div>
+
+                        <div class="login-form-group">
+                            <div class="login-label-row">
+                                <label for="password" class="login-label">Contraseña</label>
+                                <a href="ayuda.html#faq" class="login-forgot-link">¿Olvidaste la contraseña?</a>
+                            </div>
+                            <input type="password" id="password" name="password" class="login-input"
+                                placeholder="••••••••" autocomplete="current-password" required>
+                        </div>
+
+                        <button type="submit" class="btn-green-submit" id="btn-sign-in">Iniciar Sesión</button>
+                    </form>
+                </div>
+
+                <!-- Vista 1.2: Ingreso de Teléfono para Login -->
+                <div id="step-login-phone" class="auth-step" style="display: none;">
+                    <button class="login-back-btn" onclick="showLoginOptions()" type="button">
+                        ← Volver a opciones
+                    </button>
+                    <h2 class="login-step-title">Ingresá tu número</h2>
+                    <p class="login-step-desc">Te enviaremos un código de verificación por SMS.</p>
+
+                    <form id="login-phone-form" onsubmit="sendLoginOTP(event)" style="margin-top: 1.1rem;">
+                        <div class="login-form-group">
+                            <label for="login-phone-input" class="login-label">Número de teléfono</label>
+                            <div class="phone-input-row">
+                                <select class="phone-prefix-select" id="login-phone-prefix" aria-label="Código de país">
+                                    <option value="+54">🇦🇷 +54</option>
+                                    <option value="+55">🇧🇷 +55</option>
+                                    <option value="+598">🇺🇾 +598</option>
+                                    <option value="+56">🇨🇱 +56</option>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+34">🇪🇸 +34</option>
+                                </select>
+                                <input type="tel" id="login-phone-input" class="login-input" placeholder="11 4567 8900"
+                                    maxlength="14" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-green-submit">Enviar código</button>
+                    </form>
+                </div>
+
+                <!-- Vista 1.3: Verificación OTP para Login -->
+                <div id="step-login-otp" class="auth-step" style="display: none;">
+                    <button class="login-back-btn" onclick="showLoginPhoneStep()" type="button">
+                        ← Cambiar número
+                    </button>
+                    <h2 class="login-step-title">Verificá tu código</h2>
+                    <p class="login-step-desc" id="login-otp-desc">Ingresá el código de 6 dígitos enviado a tu teléfono.
+                    </p>
+
+                    <form id="login-otp-form" onsubmit="verifyLoginOTP(event)">
+                        <div class="otp-input-row">
+                            <input type="text" class="otp-digit login-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="login-otp-0" autofocus>
+                            <input type="text" class="otp-digit login-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="login-otp-1">
+                            <input type="text" class="otp-digit login-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="login-otp-2">
+                            <input type="text" class="otp-digit login-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="login-otp-3">
+                            <input type="text" class="otp-digit login-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="login-otp-4">
+                            <input type="text" class="otp-digit login-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="login-otp-5">
+                        </div>
+                        <p class="otp-resend">¿No te llegó? <button type="button" class="otp-resend-btn"
+                                onclick="resendLoginOTP()">Reenviar código</button></p>
+                        <button type="submit" class="btn-green-submit" style="margin-top: 0.8rem;">Verificar y
+                            entrar</button>
+                    </form>
+                </div>
+
             </div>
 
-            <!-- Divisor -->
-            <div class="login-divider">
-                <span>o ingresá con email</span>
+            <!-- ============================================================= -->
+            <!-- PANEL 2: CREAR CUENTA (Sin pagos, apodo, contraseña y 4 vías) -->
+            <!-- ============================================================= -->
+            <div id="panel-register" role="tabpanel" aria-labelledby="tab-register" style="display: none;">
+
+                <!-- Vista 2.1: Menú y Formulario de Registro Principal -->
+                <div id="step-register-main" class="auth-step">
+
+                    <button class="login-back-btn" onclick="switchAuthMode('login')" type="button">
+                        ← Volver a Iniciar Sesión
+                    </button>
+
+                    <div class="register-info-badge">
+                        ✨ Registro 100% gratuito — Sin pagos ni datos bancarios
+                    </div>
+
+                    <!-- Botones de Registro rápido por Redes / Teléfono -->
+                    <div class="social-login-stack">
+                        <!-- Google -->
+                        <button type="button" class="social-btn social-btn-google" id="btn-reg-google"
+                            onclick="startSocialRegister('Google')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="#4285F4"
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                <path fill="#34A853"
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                <path fill="#FBBC05"
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                                <path fill="#EA4335"
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                            </svg>
+                            Registrarse con Google
+                        </button>
+
+                        <!-- Apple -->
+                        <button type="button" class="social-btn social-btn-apple" id="btn-reg-apple"
+                            onclick="startSocialRegister('Apple')">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M16.462 1.233c.074.868-.248 1.735-.716 2.394-.48.67-1.272 1.232-2.054 1.165-.093-.839.28-1.696.73-2.32.48-.665 1.305-1.195 2.04-1.24zm3.25 17.35c-.37.85-.55 1.23-1.03 1.98-.67 1.07-1.61 2.39-2.77 2.4-1.04.01-1.3-.67-2.71-.66-1.41.01-1.7.67-2.74.66-1.16-.01-2.05-1.22-2.72-2.29-1.86-2.97-2.06-6.45-.91-8.3.82-1.35 2.1-2.14 3.32-2.14 1.24 0 2.02.66 3.04.66 1 0 1.6-.66 3.04-.66 1.08 0 2.24.59 3.06 1.8-2.69 1.47-2.25 5.31.4 6.55z" />
+                            </svg>
+                            Registrarse con Apple
+                        </button>
+
+                        <!-- Teléfono -->
+                        <button type="button" class="social-btn social-btn-phone" id="btn-reg-phone"
+                            onclick="showRegisterPhoneStep()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z" />
+                            </svg>
+                            Registrarse con número de teléfono
+                        </button>
+                    </div>
+
+                    <!-- Divisor -->
+                    <div class="login-divider">
+                        <span>o registrate con correo electrónico</span>
+                    </div>
+
+                    <!-- Formulario de Registro con Correo Electrónico -->
+                    <form id="email-register-form" onsubmit="submitRegisterEmail(event)">
+
+                        <!-- 1. Apodo con el que la IA llamará al usuario -->
+                        <div class="login-form-group">
+                            <label for="reg-nickname" class="login-label">
+                                ¿Cómo querés que Amy te llame? (Apodo) <span class="required-star">*</span>
+                            </label>
+                            <input type="text" id="reg-nickname" class="login-input"
+                                placeholder="Ej. Dr. Lucas, Alex, Sofi" maxlength="30" required>
+                            <span class="login-input-hint">La IA Amy usará este nombre o apodo para dirigirse a vos en
+                                cada conversación.</span>
+                        </div>
+
+                        <!-- 2. Correo electrónico -->
+                        <div class="login-form-group">
+                            <label for="reg-email" class="login-label">
+                                Correo electrónico <span class="required-star">*</span>
+                            </label>
+                            <input type="email" id="reg-email" class="login-input" placeholder="tu@hospital.org"
+                                autocomplete="email" required>
+                        </div>
+
+                        <!-- 3. Contraseña -->
+                        <div class="login-form-group">
+                            <label for="reg-password" class="login-label">
+                                Contraseña <span class="required-star">*</span>
+                            </label>
+                            <input type="password" id="reg-password" class="login-input"
+                                placeholder="Mínimo 6 caracteres" autocomplete="new-password" minlength="6" required>
+                        </div>
+
+                        <!-- 4. Confirmación de contraseña -->
+                        <div class="login-form-group">
+                            <label for="reg-confirm-password" class="login-label">
+                                Confirmar contraseña <span class="required-star">*</span>
+                            </label>
+                            <input type="password" id="reg-confirm-password" class="login-input"
+                                placeholder="Repetí tu contraseña" autocomplete="new-password" minlength="6" required>
+                        </div>
+
+                        <button type="submit" class="btn-green-submit" id="btn-create-account-email">
+                            Crear Cuenta en Amy
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Vista 2.2: Completar Registro con Google o Apple (Pide Apodo + Contraseña) -->
+                <div id="step-register-social-complete" class="auth-step" style="display: none;">
+                    <button class="login-back-btn" onclick="showRegisterMain()" type="button">
+                        ← Volver a opciones de registro
+                    </button>
+                    <h2 class="login-step-title">Completar registro con <span id="social-provider-title">Google</span>
+                    </h2>
+                    <p class="login-step-desc">Configurá cómo te llamará Amy y tu contraseña de acceso.</p>
+
+                    <div class="social-connected-badge" id="social-account-badge">
+                        <span>✓ Cuenta autenticada:</span> <strong id="social-account-id">usuario@gmail.com</strong>
+                    </div>
+
+                    <form id="social-register-form" onsubmit="submitSocialRegister(event)">
+                        <div class="login-form-group">
+                            <label for="reg-social-nickname" class="login-label">
+                                ¿Cómo querés que Amy te llame? (Apodo) <span class="required-star">*</span>
+                            </label>
+                            <input type="text" id="reg-social-nickname" class="login-input"
+                                placeholder="Ej. Dr. Lucas, Alex, Sofi" maxlength="30" required>
+                            <span class="login-input-hint">La IA usará este apodo para saludarte y asistirte en el
+                                panel.</span>
+                        </div>
+
+                        <div class="login-form-group">
+                            <label for="reg-social-password" class="login-label">
+                                Crear una contraseña para tu cuenta <span class="required-star">*</span>
+                            </label>
+                            <input type="password" id="reg-social-password" class="login-input"
+                                placeholder="Mínimo 6 caracteres" minlength="6" required>
+                            <span class="login-input-hint">Te permitirá acceder también con contraseña si lo
+                                prefieres.</span>
+                        </div>
+
+                        <button type="submit" class="btn-green-submit">Finalizar Registro y Entrar a Amy</button>
+                    </form>
+                </div>
+
+                <!-- Vista 2.3: Registro con Número de Teléfono (Apodo + Teléfono + Contraseña) -->
+                <div id="step-register-phone" class="auth-step" style="display: none;">
+                    <button class="login-back-btn" onclick="showRegisterMain()" type="button">
+                        ← Volver a opciones de registro
+                    </button>
+                    <h2 class="login-step-title">Registro con Teléfono</h2>
+                    <p class="login-step-desc">Ingresá tu apodo, teléfono y contraseña. Te enviaremos un código SMS para
+                        verificar tu número.</p>
+
+                    <form id="phone-register-form" onsubmit="sendRegisterOTP(event)" style="margin-top: 1.1rem;">
+                        <div class="login-form-group">
+                            <label for="reg-phone-nickname" class="login-label">
+                                ¿Cómo querés que Amy te llame? (Apodo) <span class="required-star">*</span>
+                            </label>
+                            <input type="text" id="reg-phone-nickname" class="login-input"
+                                placeholder="Ej. Dr. Lucas, Alex, Sofi" maxlength="30" required>
+                        </div>
+
+                        <div class="login-form-group">
+                            <label for="reg-phone-input" class="login-label">
+                                Número de teléfono <span class="required-star">*</span>
+                            </label>
+                            <div class="phone-input-row">
+                                <select class="phone-prefix-select" id="reg-phone-prefix" aria-label="Código de país">
+                                    <option value="+54">🇦🇷 +54</option>
+                                    <option value="+55">🇧🇷 +55</option>
+                                    <option value="+598">🇺🇾 +598</option>
+                                    <option value="+56">🇨🇱 +56</option>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+34">🇪🇸 +34</option>
+                                </select>
+                                <input type="tel" id="reg-phone-input" class="login-input" placeholder="11 4567 8900"
+                                    maxlength="14" required>
+                            </div>
+                        </div>
+
+                        <div class="login-form-group">
+                            <label for="reg-phone-password" class="login-label">
+                                Contraseña de acceso <span class="required-star">*</span>
+                            </label>
+                            <input type="password" id="reg-phone-password" class="login-input"
+                                placeholder="Mínimo 6 caracteres" minlength="6" required>
+                        </div>
+
+                        <button type="submit" class="btn-green-submit">Enviar código SMS y continuar</button>
+                    </form>
+                </div>
+
+                <!-- Vista 2.4: Verificación OTP para Registro Telefónico -->
+                <div id="step-register-otp" class="auth-step" style="display: none;">
+                    <button class="login-back-btn" onclick="showRegisterPhoneStep()" type="button">
+                        ← Modificar datos
+                    </button>
+                    <h2 class="login-step-title">Verificá tu teléfono</h2>
+                    <p class="login-step-desc" id="reg-otp-desc">Ingresá el código de 6 dígitos enviado a tu teléfono.
+                    </p>
+
+                    <form id="register-otp-form" onsubmit="verifyRegisterOTP(event)">
+                        <div class="otp-input-row">
+                            <input type="text" class="otp-digit reg-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="reg-otp-0" autofocus>
+                            <input type="text" class="otp-digit reg-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="reg-otp-1">
+                            <input type="text" class="otp-digit reg-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="reg-otp-2">
+                            <input type="text" class="otp-digit reg-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="reg-otp-3">
+                            <input type="text" class="otp-digit reg-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="reg-otp-4">
+                            <input type="text" class="otp-digit reg-otp-digit" maxlength="1" inputmode="numeric"
+                                pattern="[0-9]" id="reg-otp-5">
+                        </div>
+                        <p class="otp-resend">¿No te llegó? <button type="button" class="otp-resend-btn"
+                                onclick="resendRegisterOTP()">Reenviar código</button></p>
+                        <button type="submit" class="btn-green-submit" style="margin-top: 0.8rem;">Verificar y Crear
+                            Cuenta</button>
+                    </form>
+                </div>
+
             </div>
 
-            <!-- Formulario Email + Password -->
-            <form id="standalone-login-form">
-                <div class="login-form-group">
-                    <label for="username_or_email" class="login-label">Correo o nombre de usuario</label>
-                    <input type="text" id="username_or_email" name="login" class="login-input" autocomplete="username" required>
-                </div>
-
-                <div class="login-form-group">
-                    <div class="login-label-row">
-                        <label for="password" class="login-label">Contraseña</label>
-                        <a href="ayuda.html#faq" class="login-forgot-link">¿Olvidaste la contraseña?</a>
-                    </div>
-                    <input type="password" id="password" name="password" class="login-input" autocomplete="current-password" required>
-                </div>
-
-                <button type="submit" class="btn-green-submit" id="btn-sign-in">Sign in</button>
-            </form>
         </div>
 
-        <!-- ========== PASO 2: Ingreso de Teléfono ========== -->
-        <div id="step-phone" class="login-step login-card" style="display: none;">
-            <button class="login-back-btn" onclick="showOptions()" type="button">
-                ← Volver
-            </button>
-            <h2 class="login-step-title">Ingresá tu número</h2>
-            <p class="login-step-desc">Te enviaremos un código de verificación por SMS.</p>
-            <form id="phone-form" onsubmit="sendOTP(event)">
-                <div class="login-form-group" style="margin-top: 1rem;">
-                    <label for="phone-input" class="login-label">Número de teléfono</label>
-                    <div class="phone-input-row">
-                        <select class="phone-prefix-select" id="phone-prefix" aria-label="Código de país">
-                            <option value="+54">🇦🇷 +54</option>
-                            <option value="+55">🇧🇷 +55</option>
-                            <option value="+598">🇺🇾 +598</option>
-                            <option value="+56">🇨🇱 +56</option>
-                            <option value="+1">🇺🇸 +1</option>
-                            <option value="+34">🇪🇸 +34</option>
-                        </select>
-                        <input type="tel" id="phone-input" class="login-input" placeholder="11 4567 8900" maxlength="14" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn-green-submit">Enviar código</button>
-            </form>
-        </div>
-
-        <!-- ========== PASO 3: Verificación OTP ========== -->
-        <div id="step-otp" class="login-step login-card" style="display: none;">
-            <button class="login-back-btn" onclick="showPhoneStep()" type="button">
-                ← Cambiar número
-            </button>
-            <h2 class="login-step-title">Verificá tu código</h2>
-            <p class="login-step-desc" id="otp-desc">Ingresá el código de 6 dígitos enviado a tu teléfono.</p>
-
-            <form id="otp-form" onsubmit="verifyOTP(event)">
-                <div class="otp-input-row">
-                    <input type="text" class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-0" autofocus>
-                    <input type="text" class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-1">
-                    <input type="text" class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-2">
-                    <input type="text" class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-3">
-                    <input type="text" class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-4">
-                    <input type="text" class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-5">
-                </div>
-                <p class="otp-resend">¿No te llegó? <button type="button" class="otp-resend-btn" onclick="resendOTP()">Reenviar código</button></p>
-                <button type="submit" class="btn-green-submit" style="margin-top: 0.8rem;">Verificar y entrar</button>
-            </form>
-        </div>
-
-        <!-- Bottom Registration Callout -->
+        <!-- Callout inferior de cambio de modo (NO redirige a empresas) -->
         <div class="login-callout" id="login-callout-section">
-            ¿Primera vez en Amy? <a href="empresas.html#planes">Crear una cuenta</a>.
+            <span id="callout-prompt">¿Primera vez en Amy?</span>
+            <button type="button" class="login-toggle-link" id="callout-action" onclick="toggleAuthMode()">Crear una
+                cuenta</button>.
         </div>
 
         <!-- Footer -->
         <footer class="login-footer">
             <ul class="login-footer-links">
-                <li><a href="amy.html">Terms</a></li>
-                <li><a href="amy.html">Privacy</a></li>
-                <li><a href="ayuda.html">Security</a></li>
-                <li><a href="ayuda.html#faq">Contact Amy</a></li>
+                <li><a href="amy.html">Términos</a></li>
+                <li><a href="amy.html">Privacidad</a></li>
+                <li><a href="ayuda.html">Seguridad</a></li>
+                <li><a href="ayuda.html#faq">Contacto Amy</a></li>
             </ul>
             <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 0.8rem;">
                 Copyright © 2029 <strong>Amy AI Systems & TEC AI</strong>. Todos los derechos reservados.
@@ -153,214 +420,513 @@
     </div>
 
     <script>
-    // ─── Estado de la App ─────────────────────────────────────────────────────
-    let generatedOTP = '';
-    let phoneNumber = '';
+        // ─── Estado de la Aplicación ──────────────────────────────────────────────
+        let currentAuthMode = 'login'; // 'login' | 'register'
+        let currentSocialProvider = '';
+        let currentSocialId = '';
 
-    // ─── Helpers de UI ────────────────────────────────────────────────────────
-    function showAlert(msg, type = 'success') {
-        const box = document.getElementById('login-alert-box');
-        box.className = 'login-alert ' + type;
-        box.innerHTML = msg;
-        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+        // OTP para Login
+        let loginGeneratedOTP = '';
+        let loginPhoneNumber = '';
 
-    function hideAlert() {
-        const box = document.getElementById('login-alert-box');
-        box.className = 'login-alert';
-    }
+        // OTP para Registro
+        let registerGeneratedOTP = '';
+        let registerUserData = {
+            nickname: '',
+            phone: '',
+            password: ''
+        };
 
-    function showStep(id) {
-        ['step-options', 'step-phone', 'step-otp'].forEach(s => {
-            const el = document.getElementById(s);
-            if (el) el.style.display = 'none';
-        });
-        const target = document.getElementById(id);
-        if (target) {
-            target.style.display = 'block';
-            target.classList.add('fade-in');
+        // ─── Control de Alertas ───────────────────────────────────────────────────
+        function showAlert(msg, type = 'success') {
+            const box = document.getElementById('login-alert-box');
+            box.className = 'login-alert ' + type;
+            box.innerHTML = msg;
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-        hideAlert();
-    }
 
-    function showOptions() { showStep('step-options'); }
-    function showPhoneStep() { showStep('step-phone'); }
+        function hideAlert() {
+            const box = document.getElementById('login-alert-box');
+            box.className = 'login-alert';
+            box.innerHTML = '';
+        }
 
-    // ─── Login con Email / Password ───────────────────────────────────────────
-    document.getElementById('standalone-login-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const val = document.getElementById('username_or_email').value;
-        showAlert(`✓ Sesión iniciada con éxito. ¡Bienvenido a Amy, <strong>${val}</strong>!`, 'success');
-        setTimeout(() => { window.location.href = 'amy.html'; }, 1400);
-    });
+        // ─── Cambio entre Modos: Iniciar Sesión / Crear Cuenta ─────────────────────
+        function switchAuthMode(mode) {
+            currentAuthMode = mode;
+            hideAlert();
 
-    // ─── Google Sign-In ───────────────────────────────────────────────────────
-    function loginWithGoogle() {
-        const btn = document.getElementById('btn-google');
-        btn.classList.add('loading');
-        btn.disabled = true;
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+            const panelLogin = document.getElementById('panel-login');
+            const panelRegister = document.getElementById('panel-register');
+            const mainTitle = document.getElementById('auth-main-title');
+            const subTitle = document.getElementById('auth-sub-title');
+            const calloutPrompt = document.getElementById('callout-prompt');
+            const calloutAction = document.getElementById('callout-action');
 
-        if (typeof google !== 'undefined' && google.accounts) {
-            google.accounts.id.initialize({
-                client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
-                callback: handleGoogleResponse,
-                auto_select: false,
-                cancel_on_tap_outside: true
-            });
-            google.accounts.id.prompt((notification) => {
-                btn.classList.remove('loading');
-                btn.disabled = false;
-                if (notification.isSkippedMoment() || notification.isDismissedMoment()) {
-                    simulateSocialLogin('Google');
+            if (mode === 'register') {
+                if (tabLogin) {
+                    tabLogin.classList.remove('active');
+                    tabLogin.setAttribute('aria-selected', 'false');
                 }
+                if (tabRegister) {
+                    tabRegister.classList.add('active');
+                    tabRegister.setAttribute('aria-selected', 'true');
+                }
+
+                panelLogin.style.display = 'none';
+                panelRegister.style.display = 'block';
+
+                mainTitle.textContent = 'Crear tu cuenta en Amy';
+                subTitle.textContent = 'Comienza a utilizar el asistente clínico de IA';
+                calloutPrompt.textContent = '¿Ya tenés una cuenta?';
+                calloutAction.textContent = 'Iniciar sesión';
+
+                showRegisterMain();
+                window.location.hash = 'registro';
+            } else {
+                if (tabRegister) {
+                    tabRegister.classList.remove('active');
+                    tabRegister.setAttribute('aria-selected', 'false');
+                }
+                if (tabLogin) {
+                    tabLogin.classList.add('active');
+                    tabLogin.setAttribute('aria-selected', 'true');
+                }
+
+                panelRegister.style.display = 'none';
+                panelLogin.style.display = 'block';
+
+                mainTitle.textContent = 'Iniciar sesión en Amy';
+                subTitle.textContent = 'Accede a tu asistente clínico de IA';
+                calloutPrompt.textContent = '¿Primera vez en Amy?';
+                calloutAction.textContent = 'Crear una cuenta';
+
+                showLoginOptions();
+                window.location.hash = 'login';
+            }
+        }
+
+        function toggleAuthMode() {
+            if (currentAuthMode === 'login') {
+                switchAuthMode('register');
+            } else {
+                switchAuthMode('login');
+            }
+        }
+
+        // ─── Sub-Pasos de Iniciar Sesión ───────────────────────────────────────────
+        function showLoginStep(stepId) {
+            ['step-login-options', 'step-login-phone', 'step-login-otp'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
             });
-        } else {
-            // Fallback demo: simula el flujo mientras no hay client_id real
+            const target = document.getElementById(stepId);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.add('fadeSlideIn');
+            }
+            hideAlert();
+        }
+
+        function showLoginOptions() { showLoginStep('step-login-options'); }
+        function showLoginPhoneStep() { showLoginStep('step-login-phone'); }
+
+        // ─── Sub-Pasos de Crear Cuenta ────────────────────────────────────────────
+        function showRegisterStep(stepId) {
+            ['step-register-main', 'step-register-social-complete', 'step-register-phone', 'step-register-otp'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+            const target = document.getElementById(stepId);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.add('fadeSlideIn');
+            }
+            hideAlert();
+        }
+
+        function showRegisterMain() { showRegisterStep('step-register-main'); }
+        function showRegisterPhoneStep() {
+            // Si el usuario ya había escrito un apodo en el form de email, lo heredamos
+            const prevNick = document.getElementById('reg-nickname').value.trim();
+            if (prevNick) {
+                document.getElementById('reg-phone-nickname').value = prevNick;
+            }
+            showRegisterStep('step-register-phone');
+        }
+
+        // ─── Flujo de Éxito y Guardado de Sesión ───────────────────────────────────
+        function finalizeAuthSuccess(nickname, method, identifier) {
+            // Guardar apodo y sesión en localStorage para que Amy se dirija al usuario
+            try {
+                localStorage.setItem('amy_user_nickname', nickname);
+                localStorage.setItem('amy_user_auth', JSON.stringify({
+                    nickname: nickname,
+                    method: method,
+                    identifier: identifier,
+                    loginTime: new Date().toISOString()
+                }));
+            } catch (e) {
+                console.warn('Storage unavailable', e);
+            }
+
+            showAlert(`✓ ¡Bienvenid@ a Amy, <strong>${nickname}</strong>! Redirigiendo a tu asistente inteligente...`, 'success');
             setTimeout(() => {
-                btn.classList.remove('loading');
-                btn.disabled = false;
-                simulateSocialLogin('Google');
-            }, 1100);
+                window.location.href = 'amy.html';
+            }, 1300);
         }
-    }
 
-    function handleGoogleResponse(response) {
-        if (response.credential) {
-            showAlert('✓ <strong>Google</strong>: Sesión iniciada correctamente. Redirigiendo a Amy...', 'success');
-            setTimeout(() => { window.location.href = 'amy.html'; }, 1400);
+        // ─── LOGIN: Email / Password ──────────────────────────────────────────────
+        function submitLoginForm(e) {
+            e.preventDefault();
+            const identifier = document.getElementById('username_or_email').value.trim();
+            const pwd = document.getElementById('password').value;
+
+            if (!identifier || !pwd) {
+                showAlert('⚠ Por favor completá tu correo y contraseña.', 'error-alert');
+                return;
+            }
+
+            // Recuperar apodo si existía previamente, o usar el identificador
+            let nickname = identifier.split('@')[0];
+            try {
+                const savedNick = localStorage.getItem('amy_user_nickname');
+                if (savedNick) nickname = savedNick;
+            } catch (e) { }
+
+            finalizeAuthSuccess(nickname, 'email', identifier);
         }
-    }
 
-    // ─── Apple Sign-In ────────────────────────────────────────────────────────
-    function loginWithApple() {
-        const btn = document.getElementById('btn-apple');
-        btn.classList.add('loading');
-        btn.disabled = true;
+        // ─── LOGIN: Teléfono y OTP ────────────────────────────────────────────────
+        function sendLoginOTP(e) {
+            e.preventDefault();
+            const prefix = document.getElementById('login-phone-prefix').value;
+            const number = document.getElementById('login-phone-input').value.trim();
 
-        if (typeof AppleID !== 'undefined') {
-            AppleID.auth.init({
-                clientId: 'com.tecai.amy.web',
-                scope: 'name email',
-                redirectURI: window.location.origin + '/login.html',
-                state: 'amy_login',
-                usePopup: true
-            });
-            AppleID.auth.signIn()
-                .then(res => {
-                    btn.classList.remove('loading');
-                    btn.disabled = false;
-                    showAlert('✓ <strong>Apple</strong>: Sesión iniciada correctamente. Redirigiendo...', 'success');
-                    setTimeout(() => { window.location.href = 'amy.html'; }, 1400);
-                })
-                .catch(() => {
-                    btn.classList.remove('loading');
-                    btn.disabled = false;
-                    simulateSocialLogin('Apple');
+            if (!number || number.length < 7) {
+                showAlert('⚠ Ingresá un número de teléfono válido.', 'error-alert');
+                return;
+            }
+
+            loginPhoneNumber = prefix + ' ' + number;
+            loginGeneratedOTP = String(Math.floor(100000 + Math.random() * 900000));
+            console.info(`[Amy Login] OTP para ${loginPhoneNumber}: ${loginGeneratedOTP}`);
+
+            showLoginStep('step-login-otp');
+            document.getElementById('login-otp-desc').textContent = `Ingresá el código de 6 dígitos enviado a ${loginPhoneNumber}.`;
+
+            setTimeout(() => document.getElementById('login-otp-0').focus(), 100);
+            showAlert(`📱 <strong>Demo:</strong> Tu código de verificación es <strong style="letter-spacing:3px">${loginGeneratedOTP}</strong>`, 'info-alert');
+        }
+
+        function resendLoginOTP() {
+            loginGeneratedOTP = String(Math.floor(100000 + Math.random() * 900000));
+            console.info(`[Amy Login] Nuevo OTP para ${loginPhoneNumber}: ${loginGeneratedOTP}`);
+            showAlert(`📱 <strong>Demo:</strong> Tu nuevo código es <strong style="letter-spacing:3px">${loginGeneratedOTP}</strong>`, 'info-alert');
+        }
+
+        function verifyLoginOTP(e) {
+            e.preventDefault();
+            const digits = [...document.querySelectorAll('.login-otp-digit')].map(i => i.value).join('');
+
+            if (digits.length < 6) {
+                showAlert('⚠ Ingresá los 6 dígitos del código.', 'error-alert');
+                return;
+            }
+
+            if (digits === loginGeneratedOTP) {
+                let nickname = loginPhoneNumber;
+                try {
+                    const savedNick = localStorage.getItem('amy_user_nickname');
+                    if (savedNick) nickname = savedNick;
+                } catch (e) { }
+                finalizeAuthSuccess(nickname, 'phone', loginPhoneNumber);
+            } else {
+                showAlert('✗ Código incorrecto. Verificá e intentá de nuevo.', 'error-alert');
+                document.querySelectorAll('.login-otp-digit').forEach(i => {
+                    i.value = '';
+                    i.classList.add('otp-error');
+                    setTimeout(() => i.classList.remove('otp-error'), 700);
                 });
-        } else {
+                document.getElementById('login-otp-0').focus();
+            }
+        }
+
+        // ─── REGISTRO: Correo Electrónico (Apodo + Email + Contraseña) ─────────────
+        function submitRegisterEmail(e) {
+            e.preventDefault();
+            const nickname = document.getElementById('reg-nickname').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const pwd = document.getElementById('reg-password').value;
+            const confirmPwd = document.getElementById('reg-confirm-password').value;
+
+            if (!nickname || nickname.length < 2) {
+                showAlert('⚠ Ingresá un apodo o nombre válido (mínimo 2 caracteres).', 'error-alert');
+                return;
+            }
+
+            if (!email || !email.includes('@')) {
+                showAlert('⚠ Ingresá un correo electrónico válido.', 'error-alert');
+                return;
+            }
+
+            if (pwd.length < 6) {
+                showAlert('⚠ La contraseña debe tener al menos 6 caracteres.', 'error-alert');
+                return;
+            }
+
+            if (pwd !== confirmPwd) {
+                showAlert('⚠ Las contraseñas no coinciden. Por favor verifícalas.', 'error-alert');
+                return;
+            }
+
+            showAlert(`✓ ¡Cuenta creada con éxito! Amy te llamará <strong>${nickname}</strong>. Redirigiendo...`, 'success');
+            finalizeAuthSuccess(nickname, 'email', email);
+        }
+
+        // ─── REGISTRO: Google / Apple Social Flow ─────────────────────────────────
+        function startSocialRegister(provider) {
+            currentSocialProvider = provider;
+            const btnId = provider === 'Google' ? 'btn-reg-google' : 'btn-reg-apple';
+            const btn = document.getElementById(btnId);
+            if (btn) {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            }
+
+            // Si ya había escrito un apodo en el form de email, lo pre-cargamos
+            const prevNick = document.getElementById('reg-nickname').value.trim();
+
+            setTimeout(() => {
+                if (btn) {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                }
+
+                currentSocialId = provider === 'Google' ? 'usuario.clinico@gmail.com' : 'usuario.clinico@icloud.com';
+
+                // Abrir paso de completar registro social
+                document.getElementById('social-provider-title').textContent = provider;
+                document.getElementById('social-account-id').textContent = currentSocialId;
+                if (prevNick) {
+                    document.getElementById('reg-social-nickname').value = prevNick;
+                }
+
+                showRegisterStep('step-register-social-complete');
+                showAlert(`✓ Cuenta de <strong>${provider}</strong> vinculada. Completá tu apodo y contraseña para finalizar.`, 'info-alert');
+                setTimeout(() => document.getElementById('reg-social-nickname').focus(), 150);
+            }, 800);
+        }
+
+        function submitSocialRegister(e) {
+            e.preventDefault();
+            const nickname = document.getElementById('reg-social-nickname').value.trim();
+            const pwd = document.getElementById('reg-social-password').value;
+
+            if (!nickname || nickname.length < 2) {
+                showAlert('⚠ Ingresá un apodo o nombre con el que Amy se dirigirá a vos.', 'error-alert');
+                return;
+            }
+
+            if (pwd.length < 6) {
+                showAlert('⚠ La contraseña debe contener al menos 6 caracteres.', 'error-alert');
+                return;
+            }
+
+            finalizeAuthSuccess(nickname, currentSocialProvider.toLowerCase(), currentSocialId);
+        }
+
+        // ─── REGISTRO: Teléfono (Apodo + Teléfono + Contraseña + OTP) ──────────────
+        function sendRegisterOTP(e) {
+            e.preventDefault();
+            const nickname = document.getElementById('reg-phone-nickname').value.trim();
+            const prefix = document.getElementById('reg-phone-prefix').value;
+            const number = document.getElementById('reg-phone-input').value.trim();
+            const pwd = document.getElementById('reg-phone-password').value;
+
+            if (!nickname || nickname.length < 2) {
+                showAlert('⚠ Ingresá un apodo o nombre para tu cuenta.', 'error-alert');
+                return;
+            }
+
+            if (!number || number.length < 7) {
+                showAlert('⚠ Ingresá un número de teléfono válido.', 'error-alert');
+                return;
+            }
+
+            if (pwd.length < 6) {
+                showAlert('⚠ La contraseña debe tener al menos 6 caracteres.', 'error-alert');
+                return;
+            }
+
+            registerUserData = {
+                nickname: nickname,
+                phone: prefix + ' ' + number,
+                password: pwd
+            };
+
+            registerGeneratedOTP = String(Math.floor(100000 + Math.random() * 900000));
+            console.info(`[Amy Register] OTP para ${registerUserData.phone}: ${registerGeneratedOTP}`);
+
+            showRegisterStep('step-register-otp');
+            document.getElementById('reg-otp-desc').textContent = `Ingresá el código de 6 dígitos enviado a ${registerUserData.phone}.`;
+
+            setTimeout(() => document.getElementById('reg-otp-0').focus(), 100);
+            showAlert(`📱 <strong>Demo:</strong> Tu código de verificación es <strong style="letter-spacing:3px">${registerGeneratedOTP}</strong>`, 'info-alert');
+        }
+
+        function resendRegisterOTP() {
+            registerGeneratedOTP = String(Math.floor(100000 + Math.random() * 900000));
+            console.info(`[Amy Register] Nuevo OTP para ${registerUserData.phone}: ${registerGeneratedOTP}`);
+            showAlert(`📱 <strong>Demo:</strong> Tu nuevo código es <strong style="letter-spacing:3px">${registerGeneratedOTP}</strong>`, 'info-alert');
+        }
+
+        function verifyRegisterOTP(e) {
+            e.preventDefault();
+            const digits = [...document.querySelectorAll('.reg-otp-digit')].map(i => i.value).join('');
+
+            if (digits.length < 6) {
+                showAlert('⚠ Ingresá los 6 dígitos del código SMS.', 'error-alert');
+                return;
+            }
+
+            if (digits === registerGeneratedOTP) {
+                finalizeAuthSuccess(registerUserData.nickname, 'phone', registerUserData.phone);
+            } else {
+                showAlert('✗ Código incorrecto. Verificá e intentá nuevamente.', 'error-alert');
+                document.querySelectorAll('.reg-otp-digit').forEach(i => {
+                    i.value = '';
+                    i.classList.add('otp-error');
+                    setTimeout(() => i.classList.remove('otp-error'), 700);
+                });
+                document.getElementById('reg-otp-0').focus();
+            }
+        }
+
+        // ─── LOGIN: Google Sign-In SDK ────────────────────────────────────────────
+        function loginWithGoogle() {
+            const btn = document.getElementById('btn-login-google');
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            if (typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.initialize({
+                    client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
+                    callback: (res) => {
+                        btn.classList.remove('loading');
+                        btn.disabled = false;
+                        let nick = 'Usuario Google';
+                        try {
+                            const saved = localStorage.getItem('amy_user_nickname');
+                            if (saved) nick = saved;
+                        } catch (e) { }
+                        finalizeAuthSuccess(nick, 'google', 'cuenta.google@gmail.com');
+                    },
+                    auto_select: false,
+                    cancel_on_tap_outside: true
+                });
+                google.accounts.id.prompt((notification) => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    if (notification.isSkippedMoment() || notification.isDismissedMoment()) {
+                        let nick = 'Usuario Google';
+                        try {
+                            const saved = localStorage.getItem('amy_user_nickname');
+                            if (saved) nick = saved;
+                        } catch (e) { }
+                        finalizeAuthSuccess(nick, 'google', 'cuenta.google@gmail.com');
+                    }
+                });
+            } else {
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    let nick = 'Usuario Google';
+                    try {
+                        const saved = localStorage.getItem('amy_user_nickname');
+                        if (saved) nick = saved;
+                    } catch (e) { }
+                    finalizeAuthSuccess(nick, 'google', 'cuenta.google@gmail.com');
+                }, 900);
+            }
+        }
+
+        // ─── LOGIN: Apple Sign-In SDK ─────────────────────────────────────────────
+        function loginWithApple() {
+            const btn = document.getElementById('btn-login-apple');
+            btn.classList.add('loading');
+            btn.disabled = true;
+
             setTimeout(() => {
                 btn.classList.remove('loading');
                 btn.disabled = false;
-                simulateSocialLogin('Apple');
-            }, 900);
-        }
-    }
-
-    // ─── Simulación demo para pruebas ─────────────────────────────────────────
-    function simulateSocialLogin(provider) {
-        showAlert(`✓ <strong>${provider}</strong>: Autenticación exitosa. Bienvenido a Amy AI.`, 'success');
-        setTimeout(() => { window.location.href = 'amy.html'; }, 1400);
-    }
-
-    // ─── Login con Teléfono ───────────────────────────────────────────────────
-    function sendOTP(e) {
-        e.preventDefault();
-        const prefix = document.getElementById('phone-prefix').value;
-        const number = document.getElementById('phone-input').value.trim();
-
-        if (!number || number.length < 7) {
-            showAlert('⚠ Ingresá un número de teléfono válido.', 'error-alert');
-            return;
+                let nick = 'Usuario Apple';
+                try {
+                    const saved = localStorage.getItem('amy_user_nickname');
+                    if (saved) nick = saved;
+                } catch (e) { }
+                finalizeAuthSuccess(nick, 'apple', 'usuario.apple@icloud.com');
+            }, 850);
         }
 
-        phoneNumber = prefix + ' ' + number;
-        // Genera OTP de 6 dígitos aleatorio
-        generatedOTP = String(Math.floor(100000 + Math.random() * 900000));
-
-        // En producción esto iría a una API real de SMS (Twilio, Firebase, etc.)
-        // Por ahora lo logueamos en consola para propósitos de demo:
-        console.info(`[Amy Login] OTP para ${phoneNumber}: ${generatedOTP}`);
-
-        showStep('step-otp');
-        document.getElementById('otp-desc').textContent =
-            `Ingresá el código de 6 dígitos enviado a ${phoneNumber}.`;
-        
-        // Autofocus en primer campo OTP
-        setTimeout(() => document.getElementById('otp-0').focus(), 100);
-
-        // Mostramos el código como toast informativo para la demo
-        showAlert(`📱 <strong>Demo:</strong> Tu código de verificación es <strong style="letter-spacing:3px">${generatedOTP}</strong>`, 'info-alert');
-    }
-
-    function resendOTP() {
-        showAlert('📱 Código reenviado. Revisá tus mensajes.', 'info-alert');
-        generatedOTP = String(Math.floor(100000 + Math.random() * 900000));
-        console.info(`[Amy Login] Nuevo OTP para ${phoneNumber}: ${generatedOTP}`);
-        // Actualiza el toast
-        showAlert(`📱 <strong>Demo:</strong> Tu nuevo código es <strong style="letter-spacing:3px">${generatedOTP}</strong>`, 'info-alert');
-    }
-
-    function verifyOTP(e) {
-        e.preventDefault();
-        const digits = [...document.querySelectorAll('.otp-digit')].map(i => i.value).join('');
-
-        if (digits.length < 6) {
-            showAlert('⚠ Ingresá los 6 dígitos del código.', 'error-alert');
-            return;
-        }
-
-        if (digits === generatedOTP) {
-            showAlert(`✓ Teléfono <strong>${phoneNumber}</strong> verificado. ¡Bienvenido a Amy!`, 'success');
-            setTimeout(() => { window.location.href = 'amy.html'; }, 1400);
-        } else {
-            showAlert('✗ Código incorrecto. Verificá e intentá de nuevo.', 'error-alert');
-            document.querySelectorAll('.otp-digit').forEach(i => {
-                i.value = '';
-                i.classList.add('otp-error');
-                setTimeout(() => i.classList.remove('otp-error'), 700);
+        // ─── Navegación de Campos OTP (Autofoco, Teclado, Pegado) ───────────────────
+        function setupOtpInputs(selector) {
+            const digits = document.querySelectorAll(selector);
+            digits.forEach((input, i) => {
+                input.addEventListener('input', () => {
+                    input.value = input.value.replace(/\D/g, '').slice(-1);
+                    if (input.value && i < digits.length - 1) {
+                        digits[i + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !input.value && i > 0) {
+                        digits[i - 1].focus();
+                    }
+                });
+                input.addEventListener('paste', (e) => {
+                    const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+                    if (pasted) {
+                        [...pasted].slice(0, 6).forEach((ch, j) => {
+                            if (digits[j]) digits[j].value = ch;
+                        });
+                        digits[Math.min(pasted.length, 5)].focus();
+                        e.preventDefault();
+                    }
+                });
             });
-            document.getElementById('otp-0').focus();
         }
-    }
 
-    // ─── Navegación automática entre campos OTP ───────────────────────────────
-    document.addEventListener('DOMContentLoaded', () => {
-        const digits = document.querySelectorAll('.otp-digit');
-        digits.forEach((input, i) => {
-            input.addEventListener('input', () => {
-                input.value = input.value.replace(/\D/g, '').slice(-1);
-                if (input.value && i < digits.length - 1) {
-                    digits[i + 1].focus();
-                }
-            });
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !input.value && i > 0) {
-                    digits[i - 1].focus();
-                }
-            });
-            input.addEventListener('paste', (e) => {
-                const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
-                if (pasted) {
-                    [...pasted].slice(0, 6).forEach((ch, j) => {
-                        if (digits[j]) digits[j].value = ch;
-                    });
-                    digits[Math.min(pasted.length, 5)].focus();
-                    e.preventDefault();
+        // ─── Inicialización al Cargar la Página ────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            setupOtpInputs('.login-otp-digit');
+            setupOtpInputs('.reg-otp-digit');
+
+            // Detectar si el usuario llegó con intención de registrarse
+            const hash = window.location.hash.toLowerCase();
+            const urlParams = new URLSearchParams(window.location.search);
+            const modeParam = urlParams.get('mode');
+
+            if (hash === '#registro' || hash === '#register' || modeParam === 'register') {
+                switchAuthMode('register');
+            } else {
+                switchAuthMode('login');
+            }
+
+            // Escuchar cambios de hash
+            window.addEventListener('hashchange', () => {
+                const currentHash = window.location.hash.toLowerCase();
+                if (currentHash === '#registro' || currentHash === '#register') {
+                    if (currentAuthMode !== 'register') switchAuthMode('register');
+                } else if (currentHash === '#login') {
+                    if (currentAuthMode !== 'login') switchAuthMode('login');
                 }
             });
         });
-    });
     </script>
 
 </body>
+
 </html>
