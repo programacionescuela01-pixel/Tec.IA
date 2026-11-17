@@ -419,6 +419,10 @@
         </footer>
     </div>
 
+    <!-- Supabase SDK & Inicializador -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase.js"></script>
+
     <script>
         // ─── Estado de la Aplicación ──────────────────────────────────────────────
         let currentAuthMode = 'login'; // 'login' | 'register'
@@ -578,25 +582,67 @@
             }, 1300);
         }
 
-        // ─── LOGIN: Email / Password ──────────────────────────────────────────────
-        function submitLoginForm(e) {
+        // ─── LOGIN: Email / Password con Supabase Auth ────────────────────────────
+        async function submitLoginForm(e) {
             e.preventDefault();
             const identifier = document.getElementById('username_or_email').value.trim();
             const pwd = document.getElementById('password').value;
+            const submitBtn = document.getElementById('btn-sign-in');
 
             if (!identifier || !pwd) {
                 showAlert('⚠ Por favor completá tu correo y contraseña.', 'error-alert');
                 return;
             }
 
-            // Recuperar apodo si existía previamente, o usar el identificador
-            let nickname = identifier.split('@')[0];
-            try {
-                const savedNick = localStorage.getItem('amy_user_nickname');
-                if (savedNick) nickname = savedNick;
-            } catch (e) { }
+            if (!window.supabaseClient) {
+                showAlert('⚠ Error de conexión: cliente de Supabase no disponible.', 'error-alert');
+                return;
+            }
 
-            finalizeAuthSuccess(nickname, 'email', identifier);
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Iniciando sesión...';
+            }
+
+            try {
+                const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+                    email: identifier,
+                    password: pwd
+                });
+
+                if (error) {
+                    let userMsg = error.message;
+                    if (userMsg.includes('Invalid login credentials')) {
+                        userMsg = 'Correo o contraseña incorrectos. Verificá tus credenciales.';
+                    } else if (userMsg.includes('Email not confirmed')) {
+                        userMsg = 'Tu correo aún no ha sido confirmado. Revisá tu bandeja de entrada.';
+                    }
+                    showAlert('✗ ' + userMsg, 'error-alert');
+                    return;
+                }
+
+                // Usuario autenticado exitosamente
+                const user = data.user;
+                let nickname = user.user_metadata?.nickname || identifier.split('@')[0];
+
+                // Si existe perfil en la tabla profiles, tomarlo
+                try {
+                    const perfil = await window.obtenerPerfilUsuario(user.id);
+                    if (perfil && perfil.nickname) {
+                        nickname = perfil.nickname;
+                    }
+                } catch (pe) { }
+
+                finalizeAuthSuccess(nickname, 'email', user.email || identifier);
+            } catch (err) {
+                showAlert('✗ Ocurrió un error inesperado al iniciar sesión.', 'error-alert');
+                console.error(err);
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Iniciar Sesión';
+                }
+            }
         }
 
         // ─── LOGIN: Teléfono y OTP ────────────────────────────────────────────────
@@ -654,13 +700,14 @@
             }
         }
 
-        // ─── REGISTRO: Correo Electrónico (Apodo + Email + Contraseña) ─────────────
-        function submitRegisterEmail(e) {
+        // ─── REGISTRO: Correo Electrónico (Apodo + Email + Contraseña) con Supabase Auth
+        async function submitRegisterEmail(e) {
             e.preventDefault();
             const nickname = document.getElementById('reg-nickname').value.trim();
             const email = document.getElementById('reg-email').value.trim();
             const pwd = document.getElementById('reg-password').value;
             const confirmPwd = document.getElementById('reg-confirm-password').value;
+            const submitBtn = document.getElementById('btn-create-account-email');
 
             if (!nickname || nickname.length < 2) {
                 showAlert('⚠ Ingresá un apodo o nombre válido (mínimo 2 caracteres).', 'error-alert');
@@ -682,8 +729,57 @@
                 return;
             }
 
-            showAlert(`✓ ¡Cuenta creada con éxito! Amy te llamará <strong>${nickname}</strong>. Redirigiendo...`, 'success');
-            finalizeAuthSuccess(nickname, 'email', email);
+            if (!window.supabaseClient) {
+                showAlert('⚠ Error de conexión: cliente de Supabase no disponible.', 'error-alert');
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creando cuenta...';
+            }
+
+            try {
+                const { data, error } = await window.supabaseClient.auth.signUp({
+                    email: email,
+                    password: pwd,
+                    options: {
+                        data: {
+                            nickname: nickname,
+                            auth_method: 'email'
+                        }
+                    }
+                });
+
+                if (error) {
+                    let userMsg = error.message;
+                    if (userMsg.includes('User already registered')) {
+                        userMsg = 'Este correo electrónico ya está registrado. Probá iniciar sesión.';
+                    } else if (userMsg.includes('Password should be')) {
+                        userMsg = 'La contraseña debe tener al menos 6 caracteres.';
+                    }
+                    showAlert('✗ ' + userMsg, 'error-alert');
+                    return;
+                }
+
+                // Si requiere confirmación de email (session es null)
+                if (data.user && !data.session) {
+                    showAlert(`✉️ ¡Cuenta creada para <strong>${nickname}</strong>! Hemos enviado un enlace de confirmación a <strong>${email}</strong>. Por favor confirmalo para ingresar.`, 'info-alert');
+                    return;
+                }
+
+                // Inicio de sesión directo
+                showAlert(`✓ ¡Cuenta creada con éxito! Amy te llamará <strong>${nickname}</strong>. Redirigiendo...`, 'success');
+                finalizeAuthSuccess(nickname, 'email', email);
+            } catch (err) {
+                showAlert('✗ Ocurrió un error inesperado al registrar la cuenta.', 'error-alert');
+                console.error(err);
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Crear Cuenta en Amy';
+                }
+            }
         }
 
         // ─── REGISTRO: Google / Apple Social Flow ─────────────────────────────────
@@ -805,51 +901,27 @@
             }
         }
 
-        // ─── LOGIN: Google Sign-In SDK ────────────────────────────────────────────
-        function loginWithGoogle() {
+        // ─── LOGIN: Google Sign-In SDK & Supabase OAuth ──────────────────────────
+        async function loginWithGoogle() {
             const btn = document.getElementById('btn-login-google');
-            btn.classList.add('loading');
-            btn.disabled = true;
+            if (btn) { btn.classList.add('loading'); btn.disabled = true; }
 
-            if (typeof google !== 'undefined' && google.accounts) {
-                google.accounts.id.initialize({
-                    client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
-                    callback: (res) => {
-                        btn.classList.remove('loading');
-                        btn.disabled = false;
-                        let nick = 'Usuario Google';
-                        try {
-                            const saved = localStorage.getItem('amy_user_nickname');
-                            if (saved) nick = saved;
-                        } catch (e) { }
-                        finalizeAuthSuccess(nick, 'google', 'cuenta.google@gmail.com');
-                    },
-                    auto_select: false,
-                    cancel_on_tap_outside: true
-                });
-                google.accounts.id.prompt((notification) => {
-                    btn.classList.remove('loading');
-                    btn.disabled = false;
-                    if (notification.isSkippedMoment() || notification.isDismissedMoment()) {
-                        let nick = 'Usuario Google';
-                        try {
-                            const saved = localStorage.getItem('amy_user_nickname');
-                            if (saved) nick = saved;
-                        } catch (e) { }
-                        finalizeAuthSuccess(nick, 'google', 'cuenta.google@gmail.com');
+            if (window.supabaseClient) {
+                const { error } = await window.supabaseClient.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: window.location.origin + window.location.pathname.replace('login.html', 'amy.html')
                     }
                 });
+                if (error) {
+                    showAlert('⚠ Error al conectar con Google: ' + error.message, 'error-alert');
+                    if (btn) { btn.classList.remove('loading'); btn.disabled = false; }
+                }
             } else {
                 setTimeout(() => {
-                    btn.classList.remove('loading');
-                    btn.disabled = false;
-                    let nick = 'Usuario Google';
-                    try {
-                        const saved = localStorage.getItem('amy_user_nickname');
-                        if (saved) nick = saved;
-                    } catch (e) { }
-                    finalizeAuthSuccess(nick, 'google', 'cuenta.google@gmail.com');
-                }, 900);
+                    if (btn) { btn.classList.remove('loading'); btn.disabled = false; }
+                    finalizeAuthSuccess('Usuario Google', 'google', 'cuenta.google@gmail.com');
+                }, 700);
             }
         }
 
@@ -913,6 +985,19 @@
                 switchAuthMode('register');
             } else {
                 switchAuthMode('login');
+            }
+
+            // Verificar si el usuario ya tiene sesión activa en Supabase
+            if (window.supabaseClient) {
+                window.supabaseClient.auth.getSession().then(({ data: { session } }) => {
+                    if (session && session.user) {
+                        const nick = session.user.user_metadata?.nickname || (session.user.email ? session.user.email.split('@')[0] : 'Usuario');
+                        showAlert(`👋 ¡Hola de nuevo, <strong>${nick}</strong>! Ya tienes una sesión activa en Supabase. Redirigiendo...`, 'success');
+                        setTimeout(() => {
+                            window.location.href = 'amy.html';
+                        }, 1200);
+                    }
+                });
             }
 
             // Escuchar cambios de hash

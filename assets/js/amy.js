@@ -59,14 +59,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Personalización según apodo guardado al registrarse o iniciar sesión
-    const savedNickname = localStorage.getItem('amy_user_nickname') || '';
-    if (savedNickname && chatBox) {
-        const initialBubble = chatBox.querySelector('.chat-msg.msg-amy .chat-bubble-body');
-        if (initialBubble) {
-            initialBubble.innerHTML = `¡Hola con mucho cariño, <strong>${escapeHTML(savedNickname)}</strong>! Soy <strong>Amy</strong>, tu asistente médica y clínica de cabecera. He cargado tu perfil personal. Estoy aquí para acompañarte, orientarte ante cualquier malestar o enfermedad, resolver dudas sobre medicamentos o asistirte con la Base de Datos médica. ¿Cómo te encuentras hoy? ¿En qué puedo ayudarte?`;
+    // Personalización según apodo guardado y sincronización con Supabase
+    async function sincronizarPerfilAmy() {
+        if (!chatBox) return;
+        let nickname = localStorage.getItem('amy_user_nickname') || '';
+
+        if (window.supabaseClient) {
+            try {
+                const { data: { session } } = await window.supabaseClient.auth.getSession();
+                if (session && session.user) {
+                    const nickMeta = session.user.user_metadata?.nickname;
+                    if (nickMeta) nickname = nickMeta;
+                    else if (window.obtenerPerfilUsuario) {
+                        const perfil = await window.obtenerPerfilUsuario(session.user.id);
+                        if (perfil && perfil.nickname) nickname = perfil.nickname;
+                    }
+                    if (nickname) localStorage.setItem('amy_user_nickname', nickname);
+                }
+            } catch (e) {
+                console.warn('No se pudo sincronizar usuario en Amy:', e);
+            }
+        }
+
+        if (nickname) {
+            const initialBubble = chatBox.querySelector('.chat-msg.msg-amy .chat-bubble-body');
+            if (initialBubble) {
+                initialBubble.innerHTML = `¡Hola con mucho cariño, <strong>${escapeHTML(nickname)}</strong>! Soy <strong>Amy</strong>, tu asistente médica y clínica de cabecera. He cargado tu perfil personal. Estoy aquí para acompañarte, orientarte ante cualquier malestar o enfermedad, resolver dudas sobre medicamentos o asistirte con la Base de Datos médica. ¿Cómo te encuentras hoy? ¿En qué puedo ayudarte?`;
+            }
         }
     }
+
+    sincronizarPerfilAmy();
 
     function processUserMessage(text) {
         addUserMsg(text);

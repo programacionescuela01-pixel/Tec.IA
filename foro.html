@@ -9,6 +9,36 @@
         content="Foro oficial de Empresas Amy y TEC AI. Hilos de discusión, comunidad empresarial, recursos destacados y mentores especializados en IA y medicina.">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/foro.css">
+    <style>
+        /* Empty state cuadrantes */
+        .forum-empty-state {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            color: #94a3b8;
+        }
+
+        .forum-empty-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .forum-empty-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #475569;
+            margin: 0 0 0.3rem;
+        }
+
+        .forum-empty-desc {
+            font-size: 0.82rem;
+            margin: 0;
+        }
+
+        /* Modal display helper */
+        .modal-overlay.modal-open {
+            display: flex !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +61,8 @@
             <div class="nav-actions">
                 <a href="login.html" class="btn btn-secondary btn-sm" id="btn-login-nav">Iniciar Sesión</a>
                 <button class="btn btn-primary btn-sm" id="btn-nuevo-hilo">+ Nuevo Debate</button>
-                <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-drawer">
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú de navegación"
+                    aria-expanded="false" aria-controls="nav-drawer">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -103,110 +134,65 @@
             <div class="quadrant-card" id="cuadrante-empresas">
                 <div>
                     <h3 class="quadrant-title">🏢 Comunidad Empresas</h3>
-                    <div class="companies-list-boceto">
-                        <!-- Empresa 1 -->
-                        <div class="company-item-boceto">
-                            <div class="company-avatar-box">HC</div>
-                            <div class="company-info">
-                                <h5>Hospital Central San Lucas</h5>
-                                <span>1.420 profesionales • Nodo Activo</span>
-                            </div>
-                        </div>
-
-                        <!-- Empresa 2 -->
-                        <div class="company-item-boceto">
-                            <div class="company-avatar-box">CS</div>
-                            <div class="company-info">
-                                <h5>Clínica Médica San Martín</h5>
-                                <span>380 médicos • Triaje automatizado</span>
-                            </div>
-                        </div>
-
-                        <!-- Empresa 3 -->
-                        <div class="company-item-boceto">
-                            <div class="company-avatar-box">RS</div>
-                            <div class="company-info">
-                                <h5>Red de Salud Metropolitana</h5>
-                                <span>12 centros conectados a Amy</span>
-                            </div>
+                    <!-- Contenido dinámico desde Supabase -->
+                    <div class="companies-list-boceto" id="companies-container">
+                        <!-- Estado vacío mientras carga -->
+                        <div class="forum-empty-state" id="companies-empty">
+                            <div class="forum-empty-icon">🏢</div>
+                            <p class="forum-empty-title">Sé el primero en unirte</p>
+                            <p class="forum-empty-desc">Ninguna empresa se ha unido aún. ¡Tu institución puede ser la
+                                primera!</p>
                         </div>
                     </div>
                 </div>
-                <!-- Botón de Boceto 6 -->
-                <button class="btn btn-primary btn-join-group" id="btn-unirse-grupo">Unirse al Grupo
-                    Empresarial</button>
+                <!-- Botón conectado a Supabase -->
+                <button class="btn btn-primary btn-join-group" id="btn-unirse-grupo" onclick="abrirModalEmpresa()">
+                    + Unirse a la Comunidad Empresarial
+                </button>
             </div>
 
             <!-- CUADRANTE 3 (Abajo Izquierda): Recursos Destacados -->
             <div class="quadrant-card" id="cuadrante-recursos">
                 <div>
                     <h3 class="quadrant-title">📚 Recursos Destacados</h3>
-                    <div class="resources-list-boceto">
-                        <!-- Recurso 1: Casos de éxito -->
-                        <a href="#modal-resource" class="resource-boceto-entry" data-title="Casos de Éxito con Amy">
-                            <div class="resource-icon-boceto">🏆</div>
-                            <div class="resource-entry-text">
-                                <h5>Casos de Éxito</h5>
-                                <p>Cero margen de error y -45% de tiempo en reservas médicas.</p>
-                            </div>
-                        </a>
-
-                        <!-- Recurso 2: Guía de cumplimiento -->
-                        <a href="#modal-resource" class="resource-boceto-entry"
-                            data-title="Guía de Cumplimiento Médico">
-                            <div class="resource-icon-boceto">📑</div>
-                            <div class="resource-entry-text">
-                                <h5>Guía de Cumplimiento</h5>
-                                <p>Estándares éticos, secreto médico, normas HIPAA y GDPR.</p>
-                            </div>
-                        </a>
-
-                        <!-- Recurso 3: Seguridad y escalabilidad -->
-                        <a href="#modal-resource" class="resource-boceto-entry" data-title="Seguridad y Escalabilidad">
-                            <div class="resource-icon-boceto">🛡️</div>
-                            <div class="resource-entry-text">
-                                <h5>Seguridad y Escalabilidad</h5>
-                                <p>Protección contra ciberataques y arquitectura de contingencia.</p>
-                            </div>
-                        </a>
+                    <!-- Contenido dinámico desde Supabase -->
+                    <div class="resources-list-boceto" id="resources-container">
+                        <!-- Estado vacío mientras carga -->
+                        <div class="forum-empty-state" id="resources-empty">
+                            <div class="forum-empty-icon">📚</div>
+                            <p class="forum-empty-title">Sé el primero en compartir</p>
+                            <p class="forum-empty-desc">Aún no hay recursos publicados. ¡Contribuí con el primero!</p>
+                        </div>
                     </div>
                 </div>
+                <!-- Botón conectado a Supabase -->
+                <button class="btn btn-primary btn-join-group" id="btn-agregar-recurso" onclick="abrirModalRecurso()"
+                    style="margin-top: 1rem;">
+                    + Compartir un Recurso
+                </button>
             </div>
 
             <!-- CUADRANTE 4 (Abajo Derecha): Mentores Destacados -->
             <div class="quadrant-card" id="cuadrante-mentores">
                 <div>
                     <h3 class="quadrant-title">⭐ Mentores Destacados</h3>
-                    <div class="mentors-list-boceto">
-                        <!-- Mentor 1: Doctora María -->
-                        <div class="mentor-card-boceto">
-                            <div class="mentor-avatar">👩‍⚕️</div>
-                            <div class="mentor-info">
-                                <h5>Doctora María</h5>
-                                <span>Especialista en IA Clínica y Bioética</span>
-                            </div>
-                        </div>
-
-                        <!-- Mentor 2: Ing. Pedro -->
-                        <div class="mentor-card-boceto">
-                            <div class="mentor-avatar">👨‍💻</div>
-                            <div class="mentor-info">
-                                <h5>Ing. Pedro</h5>
-                                <span>Arquitecto Cloud & Redes Neuronales</span>
-                            </div>
-                        </div>
-
-                        <!-- Mentor 3: Doc. Felipe -->
-                        <div class="mentor-card-boceto">
-                            <div class="mentor-avatar">👨‍⚕️</div>
-                            <div class="mentor-info">
-                                <h5>Doc. Felipe</h5>
-                                <span>Director de Innovación Hospitalaria</span>
-                            </div>
+                    <!-- Contenido dinámico desde Supabase -->
+                    <div class="mentors-list-boceto" id="mentors-container">
+                        <!-- Estado vacío mientras carga -->
+                        <div class="forum-empty-state" id="mentors-empty">
+                            <div class="forum-empty-icon">⭐</div>
+                            <p class="forum-empty-title">Sé el primero en unirte</p>
+                            <p class="forum-empty-desc">Aún no hay mentores registrados. ¡Los doctores pueden
+                                postularse!</p>
                         </div>
                     </div>
                 </div>
                 <div style="margin-top: 1.5rem; text-align: center;">
+                    <!-- Botón conectado a Supabase (solo para doctores) -->
+                    <button class="btn btn-primary btn-sm" id="btn-postular-mentor" onclick="abrirModalMentor()"
+                        style="width: 100%; margin-bottom: 0.5rem;">
+                        🩺 Postularme como Mentor Doctor
+                    </button>
                     <a href="ayuda.html" class="btn btn-outline btn-sm" style="width: 100%;">Solicitar Sesión de
                         Mentoría</a>
                 </div>
@@ -444,8 +430,123 @@
         </div>
     </footer>
 
+    <!-- Supabase SDK & Inicializador -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase.js"></script>
     <script src="assets/js/shared.js"></script>
     <script src="assets/js/foro.js"></script>
+
+    <!-- Modales para unirse a los cuadrantes -->
+
+    <!-- Modal: Unirse a Comunidad Empresas -->
+    <div class="modal-overlay" id="modal-empresa"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+        <div class="modal-box"
+            style="max-width:420px; width:90%; background:#fff; border-radius:16px; padding:2rem; position:relative;">
+            <button onclick="cerrarModal('modal-empresa')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer;">×</button>
+            <h2 style="margin-bottom:0.5rem;">🏢 Unirse a la Comunidad</h2>
+            <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">Registrá tu empresa o institución de salud
+                en la comunidad TEC AI.</p>
+            <form id="form-empresa">
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="empresa-nombre">Nombre de la Empresa / Hospital *</label>
+                    <input type="text" id="empresa-nombre" class="form-control"
+                        placeholder="Ej: Hospital Central San Lucas" required style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="empresa-desc">Descripción breve</label>
+                    <input type="text" id="empresa-desc" class="form-control"
+                        placeholder="Ej: 1.200 profesionales, triaje con Amy" style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div id="empresa-msg"
+                    style="display:none; padding:0.6rem; border-radius:8px; margin-bottom:1rem; font-size:0.88rem;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;" id="empresa-submit-btn">Unirse a la
+                    Comunidad</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Compartir Recurso -->
+    <div class="modal-overlay" id="modal-recurso"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+        <div class="modal-box"
+            style="max-width:420px; width:90%; background:#fff; border-radius:16px; padding:2rem; position:relative;">
+            <button onclick="cerrarModal('modal-recurso')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer;">×</button>
+            <h2 style="margin-bottom:0.5rem;">📚 Compartir un Recurso</h2>
+            <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.5rem;">Compartí documentación, guías o materiales
+                útiles para la comunidad.</p>
+            <form id="form-recurso">
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="recurso-titulo">Título del Recurso *</label>
+                    <input type="text" id="recurso-titulo" class="form-control"
+                        placeholder="Ej: Guía de implementación HIPAA" required style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="recurso-desc">Descripción *</label>
+                    <input type="text" id="recurso-desc" class="form-control"
+                        placeholder="Breve descripción del recurso" required style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="recurso-url">URL del recurso (opcional)</label>
+                    <input type="url" id="recurso-url" class="form-control" placeholder="https://..."
+                        style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div id="recurso-msg"
+                    style="display:none; padding:0.6rem; border-radius:8px; margin-bottom:1rem; font-size:0.88rem;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;" id="recurso-submit-btn">Publicar
+                    Recurso</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Postularse como Mentor Doctor -->
+    <div class="modal-overlay" id="modal-mentor"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+        <div class="modal-box"
+            style="max-width:420px; width:90%; background:#fff; border-radius:16px; padding:2rem; position:relative;">
+            <button onclick="cerrarModal('modal-mentor')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer;">×</button>
+            <h2 style="margin-bottom:0.5rem;">🩺 Postularme como Mentor</h2>
+            <p style="color:#64748b; font-size:0.9rem; margin-bottom:0.5rem;">Solo médicos con título de
+                <strong>Doctor/a</strong> pueden registrarse como mentores.</p>
+            <div
+                style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:0.6rem 0.9rem; margin-bottom:1.2rem; font-size:0.82rem; color:#166534;">
+                ✅ Requisito: Debés tener título de <strong>Dr. o Dra.</strong>
+            </div>
+            <form id="form-mentor">
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="mentor-titulo">Título médico *</label>
+                    <select id="mentor-titulo" class="form-control" required
+                        style="width:100%; margin-top:0.3rem; padding:0.5rem; border:1px solid #cbd5e1; border-radius:8px;">
+                        <option value="">-- Seleccioná tu título --</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Dra.">Dra.</option>
+                        <option value="Dr./Dra.">Dr./Dra.</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="mentor-nombre">Nombre completo *</label>
+                    <input type="text" id="mentor-nombre" class="form-control" placeholder="Ej: María Fernández"
+                        required style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label for="mentor-especialidad">Especialidad *</label>
+                    <input type="text" id="mentor-especialidad" class="form-control"
+                        placeholder="Ej: Cardiología, IA Clínica, Bioética..." required
+                        style="width:100%; margin-top:0.3rem;">
+                </div>
+                <div id="mentor-msg"
+                    style="display:none; padding:0.6rem; border-radius:8px; margin-bottom:1rem; font-size:0.88rem;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;" id="mentor-submit-btn">Postularme como
+                    Mentor</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

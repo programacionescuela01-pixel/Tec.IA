@@ -97,7 +97,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Inicialización del Menú Hamburguesa & Drawer Móvil
     initMobileNavigation();
+
+    // 6. Actualización dinámica del Navbar según sesión en Supabase
+    actualizarNavbarAuth();
 });
+
+// ==========================================================================
+// FUNCIÓN: ESTADO DE AUTENTICACIÓN EN NAVBAR & CIERRE DE SESIÓN
+// ==========================================================================
+async function actualizarNavbarAuth() {
+    if (!window.supabaseClient) return;
+
+    try {
+        const { data: { session } } = await window.supabaseClient.auth.getSession();
+        const loginBtns = document.querySelectorAll('#btn-login-header, #btn-login-nav');
+
+        if (session && session.user) {
+            let nick = session.user.user_metadata?.nickname;
+            if (!nick) {
+                try {
+                    const { data: perfil } = await window.supabaseClient
+                        .from('profiles')
+                        .select('nickname')
+                        .eq('id', session.user.id)
+                        .single();
+                    if (perfil && perfil.nickname) nick = perfil.nickname;
+                } catch (e) {}
+            }
+            if (!nick) nick = session.user.email ? session.user.email.split('@')[0] : 'Usuario';
+
+            try { localStorage.setItem('amy_user_nickname', nick); } catch (e) {}
+
+            loginBtns.forEach(btn => {
+                const userBadge = document.createElement('div');
+                userBadge.className = 'nav-user-session-pill';
+                userBadge.style.cssText = 'display:inline-flex; align-items:center; gap:8px;';
+                userBadge.innerHTML = `
+                    <span style="font-size:0.83rem; font-weight:600; color:var(--teal-deep, #0f766e); background:var(--teal-soft, #ccfbf1); padding:4px 10px; border-radius:9999px;">
+                        👤 ${escapeHTMLShared(nick)}
+                    </span>
+                    <button type="button" class="btn btn-secondary btn-sm" style="padding:4px 9px; font-size:0.75rem;" onclick="window.cerrarSesion()">
+                        Cerrar Sesión
+                    </button>
+                `;
+                btn.replaceWith(userBadge);
+            });
+        }
+    } catch (err) {
+        console.warn('Error al verificar sesión en navbar:', err);
+    }
+}
+
+function escapeHTMLShared(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+}
 
 // ==========================================================================
 // FUNCIÓN: MENÚ HAMBURGUESA & OFF-CANVAS DRAWER MÓVIL
